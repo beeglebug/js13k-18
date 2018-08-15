@@ -3,4 +3,4 @@
 rm game.zip
 cp -r src/* build
 zip -r9 game.zip build/*
-stat -f%z game.zip
+echo $(stat -f%z game.zip) / 13312
