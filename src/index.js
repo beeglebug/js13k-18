@@ -1,46 +1,48 @@
 const canvas = document.getElementById('game')
 const ctx = canvas.getContext('2d')
 
-const WIDTH = 320
-const HEIGHT = 240
+const WIDTH = 384
+const HEIGHT = 216
 const SIZE = 8
 
 canvas.width = WIDTH
 canvas.height = HEIGHT
 
-ctx.fillStyle = '#000'
-ctx.fillRect(0, 0, WIDTH, HEIGHT)
-
 const map = [
-  '1111111111111111',
-  '1              1',
-  '1              1',
-  '1              1',
-  '1              1',
-  '1              1',
-  '1              1',
-  '1              1',
-  '1              1',
-  '1              1',
-  '1              1',
-  '1111111111111111',
+  '11111111111111111111111111111111',
+  '1                              1',
+  '1                              1',
+  '1                              1',
+  '1                              1',
+  '1                              1',
+  '1                              1',
+  '1                              1',
+  '1                              1',
+  '1                              1',
+  '1                              1',
+  '1                              1',
+  '1                              1',
+  '1                              1',
+  '1                              1',
+  '11111111111111111111111111111111',
 ]
 
 let sprites = new Image()
-sprites.onload = drawMap
+sprites.onload = start
 sprites.src = './sprites.png'
 
-function drawMap () {
-  for (let y = 0; y < map.length; y++) {
-    const row = map[y].split('')
-    for (let x = 0; x < row.length; x++) {
-      const tile = map[y][x]
-      if (tile === ' ') continue
-      drawTile(x * SIZE, y * SIZE)
-    }
-  }
+let playerX = 64
+let playerY = 32
+
+function update () {
+  if (isDown(KEY_W)) playerY -= 1
+  if (isDown(KEY_A)) playerX -= 1
+  if (isDown(KEY_S)) playerY += 1
+  if (isDown(KEY_D)) playerX += 1
 }
 
-function drawTile (x, y) {
-  ctx.drawImage(sprites, 0, 0, SIZE, SIZE, x, y, SIZE, SIZE)
+function render () {
+  clear()
+  drawMap()
+  drawPlayer()
 }
