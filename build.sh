@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+rm build/*
 rm game.zip
 cp -r src/* build
 zip -r9 game.zip build/*
