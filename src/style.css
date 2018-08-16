@@ -9,3 +9,9 @@ body {
     justify-content: center;
     height:100vh;
 }
+canvas {
+    width: 1024px;
+    height: 512px;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+}

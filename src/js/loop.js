@@ -1,6 +1,3 @@
-/**
- * LOOP
- */
 const FPS = 60
 
 let now,

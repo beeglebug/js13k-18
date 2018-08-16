@@ -1,6 +1,12 @@
+function render () {
+  clear()
+  drawMap()
+  drawPlayer()
+}
+
 function clear () {
-  ctx.fillStyle = '#1C1C1C'
-  ctx.fillRect(0, 0, WIDTH, HEIGHT)
+  ctx.fillStyle = '#152d37'
+  ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT)
 }
 
 function drawMap () {
@@ -11,17 +17,17 @@ function drawMap () {
     for (let x = 0; x < row.length; x++) {
       const tile = map[y][x]
       if (tile === ' ') continue
-      drawTile(x * SIZE, y * SIZE)
+      drawTile(x * TILE_SIZE, y * TILE_SIZE)
     }
   }
 }
 
 function drawTile (x, y) {
-  ctx.drawImage(sprites, 0, 0, SIZE, SIZE, x, y, SIZE, SIZE)
+  ctx.drawImage(sprites, 0, 0, TILE_SIZE, TILE_SIZE, x, y, TILE_SIZE, TILE_SIZE)
 }
 
 function drawPlayer () {
-  ctx.drawImage(sprites, 8, 0, SIZE, SIZE, player.x - 4, player.y - 4, SIZE, SIZE)
+  ctx.drawImage(sprites, 8, 0, TILE_SIZE, TILE_SIZE, player.x - 4, player.y - 4, TILE_SIZE, TILE_SIZE)
 }
 
 function getMap () {

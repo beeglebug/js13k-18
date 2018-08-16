@@ -1,6 +1,3 @@
-/**
- * KEYBOARD
- */
 let pressed = {}
 
 const KEY_W = 87
