@@ -1,6 +1,6 @@
+const TILE_SIZE = 8
 const GAME_WIDTH = 128
 const GAME_HEIGHT = 128
-const TILE_SIZE = 8
 
 const canvas = document.querySelector('canvas')
 canvas.width = GAME_WIDTH

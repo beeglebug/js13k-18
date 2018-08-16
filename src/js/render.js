@@ -2,6 +2,7 @@ function render () {
   clear()
   drawMap()
   drawPlayer()
+  separate()
 }
 
 function clear () {
