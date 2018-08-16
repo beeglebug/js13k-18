@@ -1,4 +1,4 @@
-const GAME_WIDTH = 256
+const GAME_WIDTH = 128
 const GAME_HEIGHT = 128
 const TILE_SIZE = 8
 
