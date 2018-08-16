@@ -1,48 +1,53 @@
 const canvas = document.getElementById('game')
 const ctx = canvas.getContext('2d')
 
-const WIDTH = 384
-const HEIGHT = 216
+const WIDTH = 256
+const HEIGHT = 128
 const SIZE = 8
 
 canvas.width = WIDTH
 canvas.height = HEIGHT
 
-const map = [
-  '11111111111111111111111111111111',
-  '1                              1',
-  '1                              1',
-  '1                              1',
-  '1                              1',
-  '1                              1',
-  '1                              1',
-  '1                              1',
-  '1                              1',
-  '1                              1',
-  '1                              1',
-  '1                              1',
-  '1                              1',
-  '1                              1',
-  '1                              1',
-  '11111111111111111111111111111111',
-]
-
 let sprites = new Image()
 sprites.onload = start
 sprites.src = './sprites.png'
 
-let playerX = 64
-let playerY = 32
+const player = {
+  x: 90,
+  y: 50
+}
+
+let worldPos = {
+  x: 0,
+  y: 1
+}
 
 function update () {
-  if (isDown(KEY_W)) playerY -= 1
-  if (isDown(KEY_A)) playerX -= 1
-  if (isDown(KEY_S)) playerY += 1
-  if (isDown(KEY_D)) playerX += 1
+  if (isDown(KEY_W)) player.y -= 1
+  if (isDown(KEY_A)) player.x -= 1
+  if (isDown(KEY_S)) player.y += 1
+  if (isDown(KEY_D)) player.x += 1
+  checkBoundaries()
 }
 
 function render () {
   clear()
   drawMap()
   drawPlayer()
+}
+
+function checkBoundaries () {
+  if (player.y < 0) {
+    worldPos.y -= 1
+    player.y = HEIGHT
+  } else if (player.y > HEIGHT) {
+    worldPos.y += 1
+    player.y = 0
+  } else if (player.x > WIDTH) {
+    worldPos.x += 1
+    player.x = 0
+  } else if (player.x < 0) {
+    worldPos.x -= 1
+    player.x = WIDTH
+  }
 }

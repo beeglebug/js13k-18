@@ -4,6 +4,8 @@ function clear () {
 }
 
 function drawMap () {
+  const map = getMap()
+  if (!map) return
   for (let y = 0; y < map.length; y++) {
     const row = map[y].split('')
     for (let x = 0; x < row.length; x++) {
@@ -19,5 +21,13 @@ function drawTile (x, y) {
 }
 
 function drawPlayer () {
-  ctx.drawImage(sprites, 8, 0, SIZE, SIZE, playerX, playerY, SIZE, SIZE)
+  ctx.drawImage(sprites, 8, 0, SIZE, SIZE, player.x - 4, player.y - 4, SIZE, SIZE)
+}
+
+function getMap () {
+  const row = world[worldPos.y]
+  if (!row) return
+  const room = row[worldPos.x]
+  if (room === '' || room === undefined) return
+  return rooms[room]
 }
