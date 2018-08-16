@@ -9,14 +9,16 @@ function clear () {
   ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT)
 }
 
+let map
+
 function drawMap () {
-  const map = getMap()
+  map = getMap()
   if (!map) return
   for (let y = 0; y < map.length; y++) {
-    const row = map[y].split('')
+    const row = map[y]
     for (let x = 0; x < row.length; x++) {
       const tile = map[y][x]
-      if (tile === ' ') continue
+      if (!tile) continue
       drawTile(x * TILE_SIZE, y * TILE_SIZE)
     }
   }
@@ -34,6 +36,6 @@ function getMap () {
   const row = world[worldPos.y]
   if (!row) return
   const room = row[worldPos.x]
-  if (room === '' || room === undefined) return
+  if (!room) return
   return rooms[room]
 }
