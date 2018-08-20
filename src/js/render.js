@@ -2,7 +2,7 @@ function render () {
   clear()
   drawMap()
   drawPlayer()
-  separate()
+  debugCollision()
 }
 
 function clear () {
@@ -39,4 +39,20 @@ function getMap () {
   const room = row[worldPos.x]
   if (!room) return
   return rooms[room]
+}
+
+function debugCollision () {
+  ctx.translate(0.5, 0.5)
+
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)'
+  near.forEach(({ x, y }) => drawRect(x, y))
+
+  ctx.strokeStyle = '#FF0000'
+  collidable.forEach(({ x, y }) => drawRect(x, y))
+
+  ctx.translate(-0.5, -0.5)
+}
+
+function drawRect (x, y) {
+  ctx.strokeRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE)
 }

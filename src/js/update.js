@@ -7,7 +7,19 @@ function update () {
   checkBoundaries()
 }
 
+let near = []
+let collidable = []
+
 function separate () {
+ const near = getNearbyTiles()
+  // TODO separate player from near
+}
+
+function getNearbyTiles () {
+
+  near = []
+  collidable = []
+
   if (!map) return
 
   const tileX = Math.floor(player.x / TILE_SIZE)
@@ -22,13 +34,11 @@ function separate () {
   for (let y = minY; y <= maxY; y++) {
     const row = map[y]
     for (let x = minX; x <= maxX; x++) {
-      const tile = map[y][x]
-      if (!tile) {
-        ctx.strokeStyle = '#52050f'
-      } else {
-        ctx.strokeStyle = 'red'
-      }
-      ctx.strokeRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE)
+      if (!row) continue
+      const tileId = row[x]
+      const tile = { x, y }
+      near.push(tile)
+      if (tileId) collidable.push(tile)
     }
   }
 }
