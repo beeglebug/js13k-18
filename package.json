@@ -1,0 +1,12 @@
+{
+  "name": "js13k-18",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:beeglebug/js13k-18.git",
+  "author": "Stuart Lee <stuart.lee@drpgroup.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "./scripts/build.sh",
+    "deploy": "./scripts/build.sh && ./scripts/deploy.sh"
+  }
+}
