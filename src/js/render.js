@@ -2,7 +2,9 @@ function render () {
   clear()
   drawMap()
   drawPlayer()
+// removeIf(production)
   debugCollision()
+// endRemoveIf(production)
 }
 
 function clear () {
@@ -41,6 +43,7 @@ function getMap () {
   return rooms[room]
 }
 
+// removeIf(production)
 function debugCollision () {
   ctx.translate(0.5, 0.5)
 
@@ -56,3 +59,4 @@ function debugCollision () {
 function drawRect (x, y) {
   ctx.strokeRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE)
 }
+// endRemoveIf(production)
