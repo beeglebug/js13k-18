@@ -48,10 +48,10 @@ function debugCollision () {
   ctx.translate(0.5, 0.5)
 
   ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)'
-  near.forEach(({ x, y }) => drawRect(x, y))
+  nearbyTiles.forEach(({ x, y }) => drawRect(x, y))
 
   ctx.strokeStyle = '#FF0000'
-  collidable.forEach(({ x, y }) => drawRect(x, y))
+  collidableTiles.forEach(({ x, y }) => drawRect(x, y))
 
   ctx.translate(-0.5, -0.5)
 }

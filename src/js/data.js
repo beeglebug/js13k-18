@@ -1,5 +1,3 @@
-const splitAndNull = str => str.split('').map(t => t === ' ' ? null : t)
-
 const rooms = [
   [
     '111111111111 111',
@@ -55,9 +53,12 @@ const rooms = [
     '               1',
     '1111111111111111',
   ],
-].map(room => room.map(splitAndNull))
+].map(room => room.map((row, y) => row.split('').map((id, x) => {
+  if (id === ' ') return null
+  return { id, x, y }
+})))
 
 const world = [
   '1 ',
   '02'
-].map(splitAndNull)
+].map(str => str.split('').map(t => t === ' ' ? null : t))

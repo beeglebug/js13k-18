@@ -9,7 +9,7 @@ const ctx = canvas.getContext('2d')
 
 
 const player = {
-  x: 90,
+  x: 100,
   y: 50
 }
 

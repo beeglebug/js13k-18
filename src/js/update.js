@@ -7,18 +7,20 @@ function update () {
   checkBoundaries()
 }
 
-let near = []
-let collidable = []
+let nearbyTiles = []
+let collidableTiles = []
 
 function separate () {
- const near = getNearbyTiles()
-  // TODO separate player from near
+  broadphase()
+  collidableTiles.forEach(tile => {
+    // check collision
+  })
 }
 
-function getNearbyTiles () {
+function broadphase () {
 
-  near = []
-  collidable = []
+  nearbyTiles = []
+  collidableTiles = []
 
   if (!map) return
 
@@ -37,8 +39,8 @@ function getNearbyTiles () {
       if (!row) continue
       const tileId = row[x]
       const tile = { x, y }
-      near.push(tile)
-      if (tileId) collidable.push(tile)
+      nearbyTiles.push(tile)
+      if (tileId) collidableTiles.push(tile)
     }
   }
 }
