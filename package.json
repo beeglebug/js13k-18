@@ -6,7 +6,7 @@
   "author": "Stuart Lee <stuart.lee@drpgroup.com>",
   "license": "MIT",
   "scripts": {
-    "build": "gulp"
+    "build": "gulp && echo $(stat -f%z archive.zip) / 13312"
   },
   "dependencies": {
     "gulp": "^3.9.1",
