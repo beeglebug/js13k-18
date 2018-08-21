@@ -6,7 +6,14 @@
   "author": "Stuart Lee <stuart.lee@drpgroup.com>",
   "license": "MIT",
   "scripts": {
-    "build": "./scripts/build.sh",
-    "deploy": "./scripts/build.sh && ./scripts/deploy.sh"
+    "build": "gulp"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-html-replace": "^1.6.2",
+    "gulp-uglify-es": "^1.0.4",
+    "gulp-zip": "^4.2.0"
   }
 }
