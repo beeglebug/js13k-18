@@ -3,6 +3,7 @@ const concat = require('gulp-concat')
 const clean = require('gulp-clean')
 const uglify = require('gulp-uglify-es').default
 const htmlreplace = require('gulp-html-replace')
+const htmlSrc = require('gulp-html-src')
 const removeCode = require('gulp-remove-code')
 const zip = require('gulp-zip')
 
@@ -17,7 +18,8 @@ gulp.task('copy', ['clean'], () => gulp
 )
 
 gulp.task('build', ['clean'], () => gulp
-  .src('src/js/*.js')
+  .src('src/index.html')
+  .pipe(htmlSrc())
   .pipe(concat('app.js'))
   .pipe(removeCode({ production: true }))
   .pipe(uglify())
