@@ -3,7 +3,7 @@ function render () {
   drawMap()
   drawPlayer()
 // removeIf(production)
-  debugCollision()
+//   debugCollision()
 // endRemoveIf(production)
 }
 
@@ -32,7 +32,15 @@ function drawTile (x, y) {
 }
 
 function drawPlayer () {
-  ctx.drawImage(sprites, 8, 0, TILE_SIZE, TILE_SIZE, player.x - 4, player.y - 4, TILE_SIZE, TILE_SIZE)
+  ctx.drawImage(
+    sprites,
+    8, 0,
+    TILE_SIZE, TILE_SIZE,
+    Math.round(player.x - player.width / 2),
+    Math.round(player.y - player.height / 2),
+    TILE_SIZE,
+    TILE_SIZE
+  )
 }
 
 function getMap () {
@@ -48,15 +56,29 @@ function debugCollision () {
   ctx.translate(0.5, 0.5)
 
   ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)'
-  nearbyTiles.forEach(({ x, y }) => drawRect(x, y))
+  nearbyTiles.forEach(tile => drawRect(tile.x, tile.y, tile.width, tile.height))
 
   ctx.strokeStyle = '#FF0000'
-  collidableTiles.forEach(({ x, y }) => drawRect(x, y))
+  collidableTiles.forEach(tile => drawRect(tile.x, tile.y, tile.width, tile.height))
+
+  ctx.strokeStyle = '#00FF00'
+  drawRect(player.x - player.width / 2, player.y - player.height / 2, player.width, player.height)
 
   ctx.translate(-0.5, -0.5)
 }
 
-function drawRect (x, y) {
-  ctx.strokeRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE)
+function drawRect (x, y, w, h) {
+  ctx.strokeRect(x, y, w, h)
 }
+
+function drawCircle (x, y, radius) {
+  ctx.beginPath()
+  ctx.arc(x, y, radius, 0, 2 * Math.PI, false)
+  ctx.stroke()
+}
+
+function debugText (text) {
+  debugTextNode.innerText = text
+}
+
 // endRemoveIf(production)

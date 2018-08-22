@@ -1,16 +1,27 @@
-const TILE_SIZE = 8
-const GAME_WIDTH = 128
-const GAME_HEIGHT = 128
-
 const canvas = document.querySelector('canvas')
 canvas.width = GAME_WIDTH
 canvas.height = GAME_HEIGHT
 const ctx = canvas.getContext('2d')
 
+// removeIf(production)
+const debugTextNode = document.createElement('div')
+document.body.appendChild(debugTextNode)
+debugTextNode.style.position = 'absolute'
+debugTextNode.style.top = 0
+debugTextNode.style.left = 0
+debugTextNode.style.color = '#FFFFFF'
+// endRemoveIf(production)
 
 const player = {
   x: 100,
-  y: 50
+  y: 50,
+  width: TILE_SIZE,
+  height: TILE_SIZE,
+  speed: 0.6,
+  velocity: {
+    x: 0,
+    y: 0
+  }
 }
 
 let worldPos = {

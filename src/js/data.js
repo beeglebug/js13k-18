@@ -49,13 +49,13 @@ const rooms = [
     '1              1',
     '1              1',
     '1              1',
-    '1              1',
+    '11111111111111 1',
     '               1',
     '1111111111111111',
   ],
 ].map(room => room.map((row, y) => row.split('').map((id, x) => {
   if (id === ' ') return null
-  return { id, x, y }
+  return { id, x, y, width: TILE_SIZE, height: TILE_SIZE }
 })))
 
 const world = [
