@@ -3,7 +3,7 @@ function render () {
   drawMap()
   drawPlayer()
 // removeIf(production)
-//   debugCollision()
+// debugRender()
 // endRemoveIf(production)
 }
 
@@ -36,39 +36,47 @@ function drawPlayer () {
     sprites,
     8, 0,
     TILE_SIZE, TILE_SIZE,
-    Math.round(player.x - player.width / 2),
-    Math.round(player.y - player.height / 2),
+    Math.floor(player.x - player.width / 2),
+    Math.floor(player.y - player.height / 2),
     TILE_SIZE,
     TILE_SIZE
   )
 }
 
-function getMap () {
-  const row = world[worldPos.y]
-  if (!row) return
-  const room = row[worldPos.x]
-  if (!room) return
-  return rooms[room]
+// removeIf(production)
+
+function renderProbes() {
+  if (xProbe1.active) {
+    ctx.fillStyle = xProbe1.colliding ? '#FF0000' : '#00FF00'
+    drawPoint(xProbe1.x, xProbe1.y)
+  }
+  if (xProbe2.active) {
+    ctx.fillStyle = xProbe2.colliding ? '#FF0000' : '#00FF00'
+    drawPoint(xProbe2.x, xProbe2.y)
+  }
+  if (yProbe1.active) {
+    ctx.fillStyle = yProbe1.colliding ? '#FF0000' : '#00FF00'
+    drawPoint(yProbe1.x, yProbe1.y)
+  }
+  if (yProbe2.active) {
+    ctx.fillStyle = yProbe2.colliding ? '#FF0000' : '#00FF00'
+    drawPoint(yProbe2.x, yProbe2.y)
+  }
 }
 
-// removeIf(production)
-function debugCollision () {
-  ctx.translate(0.5, 0.5)
-
-  ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)'
-  nearbyTiles.forEach(tile => drawRect(tile.x, tile.y, tile.width, tile.height))
-
-  ctx.strokeStyle = '#FF0000'
-  collidableTiles.forEach(tile => drawRect(tile.x, tile.y, tile.width, tile.height))
-
-  ctx.strokeStyle = '#00FF00'
-  drawRect(player.x - player.width / 2, player.y - player.height / 2, player.width, player.height)
-
-  ctx.translate(-0.5, -0.5)
+function debugRender () {
+  ctx.fillStyle = '#FF0000'
+  drawPoint(player.x, player.y)
+  renderProbes()
+  debugText(`vx: ${player.velocity.x} \n vy: ${player.velocity.y}`)
 }
 
 function drawRect (x, y, w, h) {
   ctx.strokeRect(x, y, w, h)
+}
+
+function drawPoint (x, y) {
+  ctx.fillRect(x, y, 1, 1)
 }
 
 function drawCircle (x, y, radius) {
