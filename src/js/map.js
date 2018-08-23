@@ -9,6 +9,6 @@ function getMap () {
 function getTileAt (x, y) {
   const wx = Math.floor(x / TILE_SIZE)
   const wy = Math.floor(y / TILE_SIZE)
-  const row = map[wy]
+  const row = map.data[wy]
   return row && row[wx]
 }
