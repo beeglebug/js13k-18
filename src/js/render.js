@@ -68,13 +68,9 @@ function drawSprite (sx, sy, x, y) {
 }
 
 function drawPlayer () {
-  ctx.drawImage(
-    sprites,
+  drawSprite(
     0, 8,
-    TILE_SIZE, TILE_SIZE,
     Math.floor(player.x - player.width / 2),
-    Math.floor(player.y - player.height / 2),
-    TILE_SIZE,
-    TILE_SIZE
+    Math.floor(player.y - player.height / 2)
   )
 }
