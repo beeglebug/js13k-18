@@ -5,7 +5,7 @@ function update () {
   if (isDown(KEY_A)) player.velocity.x = -player.speed
   if (isDown(KEY_S)) player.velocity.y = player.speed
   if (isDown(KEY_D)) player.velocity.x = player.speed
-  // TODO normalise diagonal speed
+  // setMagnitude(player.velocity, 1)
   collide()
   checkBoundaries()
 }
@@ -40,4 +40,25 @@ function checkBoundaries () {
     worldPos.x -= 1
     player.x = GAME_WIDTH
   }
+}
+
+function magnitude (v) {
+  return Math.sqrt((v.x * v.x) + (v.y * v.y))
+}
+
+function setMagnitude (v, len) {
+  normalise(v)
+  multiply(v, len)
+}
+
+function normalise (v) {
+  if (v.x === 0 && v.y === 0) return
+  const m = magnitude(v)
+  v.x /= m
+  v.y /= m
+}
+
+function multiply (v, s) {
+  v.x *= s
+  v.y *= s
 }
