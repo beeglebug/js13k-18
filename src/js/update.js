@@ -27,19 +27,25 @@ function collide () {
 }
 
 function checkBoundaries () {
+  let change = false
   if (player.y < 0) {
     worldPos.y -= 1
     player.y = GAME_HEIGHT
+    change = true
   } else if (player.y > GAME_HEIGHT) {
     worldPos.y += 1
     player.y = 0
+    change = true
   } else if (player.x > GAME_WIDTH) {
     worldPos.x += 1
     player.x = 0
+    change = true
   } else if (player.x < 0) {
     worldPos.x -= 1
     player.x = GAME_WIDTH
+    change = true
   }
+  if (change) map = getMap()
 }
 
 function magnitude (v) {

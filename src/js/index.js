@@ -27,6 +27,8 @@ let worldPos = {
   y: 1
 }
 
+let map = getMap()
+
 let sprites = new Image()
 sprites.onload = start
 sprites.src = './sprites.png'

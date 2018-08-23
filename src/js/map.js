@@ -7,6 +7,7 @@ function getMap () {
 }
 
 function getTileAt (x, y) {
+  if (!map) return
   const wx = Math.floor(x / TILE_SIZE)
   const wy = Math.floor(y / TILE_SIZE)
   const row = map.data[wy]

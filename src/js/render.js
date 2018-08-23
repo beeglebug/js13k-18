@@ -1,6 +1,7 @@
 function render () {
   clear()
   drawMap()
+  drawItems()
   drawPlayer()
 // removeIf(production)
   debugRender()
@@ -12,10 +13,14 @@ function clear () {
   ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT)
 }
 
-let map
+function drawItems () {
+  if (!map) return
+  map.items.forEach(item => {
+    drawSprite(item.sx, item.sy, item.x * TILE_SIZE, item.y * TILE_SIZE)
+  })
+}
 
 function drawMap () {
-  map = getMap()
   if (!map) return
   for (let y = 0; y < map.data.length; y++) {
     const row = map.data[y]
@@ -43,6 +48,20 @@ function drawTile ({ type, x, y }) {
     TILE_SIZE,
     x * TILE_SIZE,
     y * TILE_SIZE,
+    TILE_SIZE,
+    TILE_SIZE
+  )
+}
+
+function drawSprite (sx, sy, x, y) {
+  ctx.drawImage(
+    sprites,
+    sx,
+    sy,
+    TILE_SIZE,
+    TILE_SIZE,
+    x,
+    y,
     TILE_SIZE,
     TILE_SIZE
   )
