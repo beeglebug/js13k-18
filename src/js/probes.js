@@ -68,10 +68,6 @@ function softCorners () {
   }
 
   // TODO edge case where both corners fire at once
-  if (yProbe2.colliding && xProbe2.colliding) {
-
-  }
-
 }
 
 function resetProbe (probe) {
