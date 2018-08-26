@@ -9,32 +9,10 @@ debugTextNode.style.top = 0
 debugTextNode.style.left = 0
 debugTextNode.style.color = '#FFFFFF'
 
-function renderProbes() {
-  if (xProbe1.active) {
-    ctx.fillStyle = xProbe1.colliding ? '#FF0000' : '#00FF00'
-    drawPoint(xProbe1.x, xProbe1.y)
-  }
-  if (xProbe2.active) {
-    ctx.fillStyle = xProbe2.colliding ? '#FF0000' : '#00FF00'
-    drawPoint(xProbe2.x, xProbe2.y)
-  }
-  if (yProbe1.active) {
-    ctx.fillStyle = yProbe1.colliding ? '#FF0000' : '#00FF00'
-    drawPoint(yProbe1.x, yProbe1.y)
-  }
-  if (yProbe2.active) {
-    ctx.fillStyle = yProbe2.colliding ? '#FF0000' : '#00FF00'
-    drawPoint(yProbe2.x, yProbe2.y)
-  }
-}
-
 function debugRender () {
   if (!DEBUG) return
-  ctx.fillStyle = '#FF0000'
-  drawPoint(player.x, player.y)
-  renderProbes()
   debugTileCollision()
-  debugText(`vx: ${player.velocity.x} \n vy: ${player.velocity.y}`)
+  ctx.fillStyle = '#FF0000'
 }
 
 function drawRect (x, y, w, h) {

@@ -4,23 +4,9 @@ canvas.height = GAME_HEIGHT
 const ctx = canvas.getContext('2d')
 
 const player = {
-  x: 100,
-  y: 50,
-  width: TILE_SIZE,
-  height: TILE_SIZE,
-  speed: 1,
-  velocity: {
-    x: 0,
-    y: 0
-  }
+  x: 5,
+  y: 5
 }
-
-// collision probes
-const xProbe1 = { x: 0, y: 0, active: false }
-const xProbe2 = { x: 0, y: 0, active: false }
-const yProbe1 = { x: 0, y: 0, active: false }
-const yProbe2 = { x: 0, y: 0, active: false }
-
 
 let worldPos = {
   x: 0,
@@ -38,4 +24,10 @@ function loadImg (src) {
     img.onload = () => done(img)
     img.src = src
   })
+}
+
+function start ([s, f]) {
+  sprites = s
+  font = f
+  render()
 }

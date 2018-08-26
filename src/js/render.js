@@ -72,7 +72,7 @@ function drawSprite (sx, sy, x, y) {
 function drawPlayer () {
   drawSprite(
     0, 8,
-    Math.floor(player.x - player.width / 2),
-    Math.floor(player.y - player.height / 2)
+    player.x * TILE_SIZE,
+    player.y * TILE_SIZE
   )
 }
