@@ -30,9 +30,8 @@ function drawItems () {
 
 function drawMap () {
   if (!map) return
-  for (let y = 0; y < map.data.length; y++) {
-    const row = map.data[y]
-    for (let x = 0; x < row.length; x++) {
+  for (let y = 0; y < MAP_HEIGHT; y++) {
+    for (let x = 0; x < MAP_WIDTH; x++) {
       const tile = map.data[y][x]
       if (!tile) continue
       drawTile(tile)

@@ -12,11 +12,9 @@ debugTextNode.style.color = '#FFFFFF'
 function debugRender () {
   if (!DEBUG) return
   debugTileCollision()
+  debugText(`x: ${player.x}
+y: ${player.y}`)
   ctx.fillStyle = '#FF0000'
-}
-
-function drawRect (x, y, w, h) {
-  ctx.strokeRect(x, y, w, h)
 }
 
 function drawPoint (x, y) {
@@ -36,18 +34,16 @@ function debugText (text) {
 function debugTileCollision () {
   map = getMap()
   if (!map) return
-  ctx.translate(0.5, 0.5)
-  ctx.strokeStyle = '#FF0000'
+  ctx.fillStyle = 'rgba(255, 0, 0, 0.5)'
   for (let y = 0; y < map.data.length; y++) {
     const row = map.data[y]
     for (let x = 0; x < row.length; x++) {
       const tile = map.data[y][x]
       if (!tile) continue
       if (!tile.solid) continue
-      drawRect(tile.x * TILE_SIZE, tile.y * TILE_SIZE, TILE_SIZE, TILE_SIZE)
+      ctx.fillRect(tile.x * TILE_SIZE, tile.y * TILE_SIZE, TILE_SIZE, TILE_SIZE)
     }
   }
-  ctx.translate(-0.5, -0.5)
 }
 
 // endRemoveIf(production)

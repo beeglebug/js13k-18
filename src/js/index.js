@@ -4,8 +4,8 @@ canvas.height = GAME_HEIGHT
 const ctx = canvas.getContext('2d')
 
 const player = {
-  x: 5,
-  y: 5
+  x: 12,
+  y: 2
 }
 
 let worldPos = {
