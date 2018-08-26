@@ -40,19 +40,19 @@ function handle () {
   let mapChanged = false
 
   if (y < 0) {
-    worldPos.y -= 1
+    player.wy -= 1
     y = MAP_HEIGHT - 1
     mapChanged = true
   } else if (y >= MAP_HEIGHT) {
-    worldPos.y += 1
+    player.wy += 1
     y = 0
     mapChanged = true
   } else if (x >= MAP_WIDTH) {
-    worldPos.x += 1
+    player.wx += 1
     x = 0
     mapChanged = true
   } else if (x < 0) {
-    worldPos.x -= 1
+    player.wx -= 1
     x = MAP_WIDTH - 1
     mapChanged = true
   }

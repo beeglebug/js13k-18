@@ -5,12 +5,9 @@ const ctx = canvas.getContext('2d')
 
 const player = {
   x: 12,
-  y: 2
-}
-
-let worldPos = {
-  x: 0,
-  y: 1
+  y: 2,
+  wx: 0,
+  wy: 1
 }
 
 let map = getMap()

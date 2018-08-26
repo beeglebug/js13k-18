@@ -1,7 +1,7 @@
 function getMap () {
-  const row = world[worldPos.y]
+  const row = world[player.wy]
   if (!row) return
-  const room = row[worldPos.x]
+  const room = row[player.wx]
   if (!room) return
   return rooms[room]
 }
