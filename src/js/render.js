@@ -41,17 +41,20 @@ function drawMap () {
 }
 
 
-function drawTile ({ type, x, y, sx, sy }) {
-  ctx.drawImage(
-    sprites,
+function drawTile ({ x, y, sx, sy }) {
+  drawSprite(
     sx,
     sy,
-    TILE_SIZE,
-    TILE_SIZE,
     x * TILE_SIZE,
-    y * TILE_SIZE,
-    TILE_SIZE,
-    TILE_SIZE
+    y * TILE_SIZE
+  )
+}
+
+function drawPlayer () {
+  drawSprite(
+    0, 8,
+    player.x * TILE_SIZE,
+    player.y * TILE_SIZE
   )
 }
 
@@ -66,13 +69,5 @@ function drawSprite (sx, sy, x, y) {
     y,
     TILE_SIZE,
     TILE_SIZE
-  )
-}
-
-function drawPlayer () {
-  drawSprite(
-    0, 8,
-    player.x * TILE_SIZE,
-    player.y * TILE_SIZE
   )
 }
