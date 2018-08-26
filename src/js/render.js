@@ -18,7 +18,14 @@ function clear () {
 }
 
 function drawUI () {
+  drawInventory()
+}
 
+function drawInventory () {
+  player.inventory.forEach(item => {
+    const x = 15 * TILE_SIZE
+    drawSprite(item.sx, item.sy, x, 0)
+  })
 }
 
 function drawItems () {

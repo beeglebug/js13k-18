@@ -4,3 +4,6 @@ const GAME_HEIGHT = 128
 
 const MAP_HEIGHT = 15
 const MAP_WIDTH = 16
+
+const ITEM_KEY = 'K'
+const ITEM_DOOR = 'D'

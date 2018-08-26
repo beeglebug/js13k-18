@@ -1,14 +1,22 @@
 const spaceToNull = char => char === ' ' ? null : char
 
+/**
+ * TODO pack / unpack
+ * eg: 1:0:8:16:1
+ */
 const tileData = {
   0: {},
-  1: { sx: 8, solid: true },
-  2: { sx: 16, solid: true },
+  1: { sy: 0, sx: 8, solid: true },
+  2: { sy: 0, sx: 16, solid: true },
 }
 
+/**
+ * TODO pack / unpack
+ * eg: K:8:8
+ */
 const itemMap = {
-  K: { sx: 8, sy: 8 },
-  D: { sx: 16, sy: 8 },
+  [ITEM_KEY]: { type: ITEM_KEY, sx: 8, sy: 8, collectable: true, solid: false },
+  [ITEM_DOOR]: { type: ITEM_DOOR, sx: 16, sy: 8, collectable: false, solid: true },
 }
 
 const rooms = [

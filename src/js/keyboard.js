@@ -11,7 +11,7 @@ addEventListener('blur', onBlur)
 
 function onKeydown (e) {
   pressed[e.which] = true
-  handle()
+  move()
   render()
 }
 
@@ -24,41 +24,3 @@ function onBlur () {
 }
 
 const isDown = key => !!pressed[key]
-
-function handle () {
-  let x = player.x
-  let y = player.y
-
-  if (isDown(KEY_W)) y -= 1
-  if (isDown(KEY_A)) x -= 1
-  if (isDown(KEY_S)) y += 1
-  if (isDown(KEY_D)) x += 1
-
-  const tile = getTileAt(x, y)
-  if (tile && tile.solid) return
-
-  let mapChanged = false
-
-  if (y < 0) {
-    player.wy -= 1
-    y = MAP_HEIGHT - 1
-    mapChanged = true
-  } else if (y >= MAP_HEIGHT) {
-    player.wy += 1
-    y = 0
-    mapChanged = true
-  } else if (x >= MAP_WIDTH) {
-    player.wx += 1
-    x = 0
-    mapChanged = true
-  } else if (x < 0) {
-    player.wx -= 1
-    x = MAP_WIDTH - 1
-    mapChanged = true
-  }
-
-  if (mapChanged) map = getMap()
-
-  player.x = x
-  player.y = y
-}
