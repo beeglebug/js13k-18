@@ -95,5 +95,5 @@ function collideProbes () {
 function collidableTileUnderProbe (probe) {
   if (!probe.active) return false
   const tile = getTileAt(probe.x, probe.y)
-  return (tile && tile.collision)
+  return (tile && tile.solid)
 }

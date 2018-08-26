@@ -65,7 +65,7 @@ function debugTileCollision () {
     for (let x = 0; x < row.length; x++) {
       const tile = map.data[y][x]
       if (!tile) continue
-      if (!tile.collision) continue
+      if (!tile.solid) continue
       drawRect(tile.x * TILE_SIZE, tile.y * TILE_SIZE, TILE_SIZE, TILE_SIZE)
     }
   }

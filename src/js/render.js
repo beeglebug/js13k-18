@@ -1,17 +1,24 @@
 function render () {
   clear()
+  ctx.translate(0, 8)
   drawMap()
   drawItems()
   drawPlayer()
-  drawText('Testing this font rendering solution when there are lots of characters and stuff, it should handle a lot of text')
+  // drawText('Testing this font rendering solution when there are lots of characters and stuff, it should handle a lot of text')
 // removeIf(production)
   debugRender()
 // endRemoveIf(production)
+  ctx.translate(0, -8)
+  drawUI()
 }
 
 function clear () {
   ctx.fillStyle = '#0f1517'
   ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT)
+}
+
+function drawUI () {
+
 }
 
 function drawItems () {
@@ -33,18 +40,12 @@ function drawMap () {
   }
 }
 
-// TODO shrink this to [0,1] and unpack
-const tileSet = {
-  0: { x: 0, y: 0 },
-  1: { x: 8, y: 0 },
-}
 
-function drawTile ({ type, x, y }) {
-  const source = tileSet[type]
+function drawTile ({ type, x, y, sx, sy }) {
   ctx.drawImage(
     sprites,
-    source.x,
-    source.y,
+    sx,
+    sy,
     TILE_SIZE,
     TILE_SIZE,
     x * TILE_SIZE,

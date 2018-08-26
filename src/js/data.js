@@ -1,8 +1,9 @@
 const spaceToNull = char => char === ' ' ? null : char
 
-const collisionMap = {
-  0: false,
-  1: true
+const tileData = {
+  0: {},
+  1: { sx: 8, solid: true },
+  2: { sx: 16, solid: true },
 }
 
 const itemMap = {
@@ -12,22 +13,21 @@ const itemMap = {
 const rooms = [
   {
     data:
-    '1111111111110111' +
+    '1222222222220221' +
     '1000000000000001' +
     '1000000000000001' +
+    '1000012221000001' +
+    '1000020002000001' +
+    '1000000200000001' +
+    '1000010001000002' +
+    '1000022222000000' +
     '1000000000000001' +
-    '1000011111000001' +
-    '1000010001000001' +
-    '1000000100000001' +
-    '1000010001000000' +
-    '1000011111000001' +
     '1000000000000001' +
-    '1000000000000001' +
-    '1000000011111111' +
+    '1000000012222221' +
     '1000000010000001' +
-    '1000000010000001' +
+    '1000000010000002' +
     '1000000010000000' +
-    '1111111111111111',
+    '2222222222222222',
     items: [
       'K:9:12'
     ]
@@ -37,7 +37,6 @@ const rooms = [
     '                ' +
     '                ' +
     '    11111111    ' +
-    '    10000001    ' +
     '    10000001    ' +
     '    10000001    ' +
     '    11100111    ' +
@@ -65,7 +64,6 @@ const rooms = [
     '  1000001       ' +
     '  1000001       ' +
     '  1000001       ' +
-    '  1000001       ' +
     '111000001       ' +
     '000000001       ' +
     '111111111       ',
@@ -83,22 +81,18 @@ function parseItem (str) {
 }
 
 function parseMap (map) {
-
-  if (!map.width) map.width = 16
-  if (!map.height) map.height = 16
-
   const tiles = map.data.split('').map(spaceToNull)
 
   map.data = []
 
-  for (let y = 0; y < map.height; y++) {
+  for (let y = 0; y < 15; y++) {
     const row = []
-    for (let x = 0; x < map.width; x++) {
-      const ix = y * map.width + x
+    for (let x = 0; x < 16; x++) {
+      const ix = y * 16 + x
       let type = tiles[ix]
       let tile = null
       if (type !== null) {
-        tile = { type, x, y, collision: collisionMap[type] }
+        tile = { type, x, y, sx: 0, sy: 0, collide: false, ...(tileData[type] || {}) }
       }
       row.push(tile)
     }
