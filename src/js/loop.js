@@ -27,7 +27,9 @@ function tick() {
   render()
 }
 
-function start () {
+function start (s, f) {
+  sprites = s
+  font = f
   last = performance.now()
   requestAnimationFrame(tick)
 }
