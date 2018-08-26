@@ -27,7 +27,7 @@ function tick() {
   render()
 }
 
-function start (s, f) {
+function start ([s, f]) {
   sprites = s
   font = f
   last = performance.now()

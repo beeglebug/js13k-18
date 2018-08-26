@@ -30,7 +30,7 @@ let worldPos = {
 let map = getMap()
 let sprites, font
 
-Promise.race([loadImg('./sprites.png'), loadImg('./font.png')]).then(start)
+Promise.all([loadImg('./sprites.png'), loadImg('./font.png')]).then(start)
 
 function loadImg (src) {
   const img = new Image()

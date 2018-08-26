@@ -3,6 +3,7 @@ function render () {
   drawMap()
   drawItems()
   drawPlayer()
+  drawText('Testing this font rendering solution when there are lots of characters and stuff, it should handle a lot of text')
 // removeIf(production)
   debugRender()
 // endRemoveIf(production)
