@@ -4,8 +4,8 @@ canvas.height = GAME_HEIGHT
 const ctx = canvas.getContext('2d')
 
 const player = {
-  x: 3,
-  y: 12,
+  x: 12,
+  y: 7,
   wx: 0,
   wy: 1,
   inventory: []
