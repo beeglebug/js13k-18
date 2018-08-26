@@ -7,17 +7,23 @@ const htmlSrc = require('gulp-html-src')
 const removeCode = require('gulp-remove-code')
 const zip = require('gulp-zip')
 
+const assets = [
+  'src/style.css',
+  'src/sprites.png',
+  'src/font.png'
+]
+
 gulp.task('clean', () => gulp
   .src(['build/*', 'archive.zip'], { read: false })
   .pipe(clean())
 )
 
 gulp.task('copy', ['clean'], () => gulp
-  .src(['src/style.css', 'src/sprites.png'])
+  .src(assets)
   .pipe(gulp.dest('build'))
 )
 
-gulp.task('build', ['clean'], () => gulp
+gulp.task('compile', ['clean'], () => gulp
   .src('src/index.html')
   .pipe(htmlSrc())
   .pipe(concat('app.js'))
@@ -32,10 +38,12 @@ gulp.task('html', ['clean'], () => gulp
   .pipe(gulp.dest('build/'))
 )
 
-gulp.task('zip', ['copy', 'build', 'html'], () =>
+gulp.task('zip', ['copy', 'compile', 'html'], () =>
   gulp.src('build/*')
     .pipe(zip('archive.zip'))
     .pipe(gulp.dest(''))
 );
 
-gulp.task('default', ['clean', 'copy', 'build', 'html', 'zip'])
+gulp.task('build', ['clean', 'copy', 'compile', 'html', 'zip'])
+
+gulp.task('default', ['build'])
