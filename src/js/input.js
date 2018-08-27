@@ -1,7 +1,7 @@
 function input () {
 
   if (mode === MODE_TEXT) {
-    if (isDown(KEY_ANY)) nextText()
+    if (isDown(KEY_SPACE)) nextText()
     return
   }
 
@@ -21,6 +21,8 @@ function input () {
       if (key) {
         consumeInventoryItem(key)
         destroyItem(item)
+      } else {
+        showText('It\'s locked\nYou need a key')
       }
     } else if (item.type === ITEM_SIGN) {
       showText(item.text)

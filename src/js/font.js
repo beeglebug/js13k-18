@@ -1,8 +1,6 @@
 function drawText (text) {
-  // split at 30 characters on word boundaries
-  const lines = text.toUpperCase().split(/(.{1,24}\b)/).filter(Boolean).map(str => str.trim())
-
-  const max = lines.slice().sort((a, b) => (b.length - a.length))[0].length
+  const lines = text.toUpperCase().split('\n').map(str => str.trim())
+  const max = [...lines].sort((a, b) => (b.length - a.length))[0].length
 
   const pad = 4
   const lineHeight = 8

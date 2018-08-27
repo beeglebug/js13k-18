@@ -49,8 +49,8 @@ const rooms = [
     '100000000010001' +
     '222222202222222',
     items: [
-      'K:12:12',
-      'D:7:0',
+      'K|12|12',
+      'D|7|0',
     ]
   },
   {
@@ -89,7 +89,7 @@ const rooms = [
     '100000000000001' +
     '222222202222222',
     items: [
-      'S:7:3:You win'
+      'S|7|3|An ancient carving\nYou can\'t decipher it'
     ]
   },
   { // TEMPLATE
@@ -126,7 +126,7 @@ function parseWorld (str) {
 
 
 function parseItem (str) {
-  const [id, x, y, ...rest] = str.split(':')
+  const [id, x, y, ...rest] = str.split('|')
   return {
     ...itemMap[id](rest),
     x: +x,
