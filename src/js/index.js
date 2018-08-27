@@ -8,7 +8,8 @@ const player = {
   y: 7,
   wx: 0,
   wy: 1,
-  inventory: []
+  inventory: [],
+  health: 3
 }
 
 let map = getMap()

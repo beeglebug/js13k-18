@@ -13,14 +13,23 @@ function render () {
 }
 
 function clear () {
-  ctx.fillStyle = '#0f1517'
+  ctx.fillStyle = '#000000'
   ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT)
 }
 
 function drawUI () {
+  ctx.fillStyle = '#20213E'
+  ctx.fillRect(0, 8, 128, 1)
+  drawHealth()
   drawInventory()
   if (currentText) {
     drawText(currentText)
+  }
+}
+
+function drawHealth () {
+  for (let x = 0; x < player.health; x++) {
+    drawSprite(32, 8, x * 8, 0)
   }
 }
 

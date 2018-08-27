@@ -89,7 +89,7 @@ const rooms = [
     '1000000000000001' +
     '2222222222222222',
     items: [
-      'S:12:0:Important information about your quest'
+      'S:12:0:You win'
     ]
   },
   { // TEMPLATE
