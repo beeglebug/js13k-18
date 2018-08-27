@@ -14,7 +14,8 @@ function move () {
   if (item) {
     if (item.collectable) pickUpItem(item)
     if (item.type === ITEM_DOOR && hasInventoryItem(ITEM_KEY)) {
-      consumeInventoryItem(ITEM_KEY)
+      const inv = getInventoryItem(ITEM_KEY)
+      consumeInventoryItem(inv)
       destroyItem(item)
     }
     if (item.solid) return
@@ -48,6 +49,10 @@ function move () {
 
 function consumeInventoryItem (item) {
   player.inventory = player.inventory.filter(i => i !== item)
+}
+
+function getInventoryItem (type) {
+  return player.inventory.find(item => item.type === type)
 }
 
 function hasInventoryItem (type) {
