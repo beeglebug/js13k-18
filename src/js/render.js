@@ -4,7 +4,6 @@ function render () {
   drawMap()
   drawItems()
   drawPlayer()
-  // drawText('Testing this font rendering solution when there are lots of characters and stuff, it should handle a lot of text')
 // removeIf(production)
   debugRender()
 // endRemoveIf(production)
@@ -19,7 +18,7 @@ function clear () {
 
 function drawUI () {
   ctx.fillStyle = '#20213E'
-  ctx.fillRect(0, 8, 128, 1)
+  ctx.fillRect(0, 7, GAME_WIDTH, 1)
   drawHealth()
   drawInventory()
   if (currentText) {
@@ -35,7 +34,7 @@ function drawHealth () {
 
 function drawInventory () {
   player.inventory.forEach(item => {
-    const x = 15 * TILE_SIZE
+    const x = (MAP_WIDTH - 1) * TILE_SIZE
     drawSprite(item.sx, item.sy, x, 0)
   })
 }

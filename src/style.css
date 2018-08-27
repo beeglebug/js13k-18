@@ -10,7 +10,7 @@ body {
     height:100vh;
 }
 canvas {
-    width: 512px;
+    width: 496px;
     height: 512px;
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;

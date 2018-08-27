@@ -4,10 +4,10 @@ canvas.height = GAME_HEIGHT
 const ctx = canvas.getContext('2d')
 
 const player = {
-  x: 12,
-  y: 7,
+  x: 7,
+  y: 12,
   wx: 0,
-  wy: 1,
+  wy: 2,
   inventory: [],
   health: 3
 }
@@ -30,15 +30,3 @@ function start ([s, f]) {
   font = f
   render()
 }
-
-
-
-/*
-
-TODO
-
-- maybe dont try to do clever line length regex, just use \n in the strings?
-- end of message character on text rendering?
-
-
-*/

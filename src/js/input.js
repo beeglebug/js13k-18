@@ -49,9 +49,13 @@ function input () {
     player.wx -= 1
     x = MAP_WIDTH - 1
     mapChanged = true
+  } else {
+    if (!tile) return // empty tiles not at screen edge
   }
 
+
   if (mapChanged) map = getMap()
+
 
   player.x = x
   player.y = y
