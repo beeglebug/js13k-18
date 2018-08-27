@@ -1,7 +1,7 @@
 function input () {
 
   if (mode === MODE_TEXT) {
-    if (isDown(KEY_ENTER)) nextText()
+    if (isDown(KEY_ANY)) nextText()
     return
   }
 
