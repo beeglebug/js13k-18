@@ -1,6 +1,6 @@
 function drawText (text) {
   // split at 30 characters on word boundaries
-  const lines = text.toUpperCase().split(/(.{1,24}\b)/).filter(Boolean)
+  const lines = text.toUpperCase().split(/(.{1,24}\b)/).filter(Boolean).map(str => str.trim())
 
   const max = lines.slice().sort((a, b) => (b.length - a.length))[0].length
 
@@ -19,7 +19,7 @@ function drawText (text) {
   ctx.fillStyle = '#000000'
   ctx.fillRect(bx, by, bw, bh)
 
-  lines.forEach((line, y) => line.trim().split('').forEach((c, x) => {
+  lines.forEach((line, y) => line.split('').forEach((c, x) => {
     const sx = getX(c)
     const dx = x * 4 + pad
     const dy = (y * lineHeight) + pad
@@ -39,5 +39,6 @@ function getX (c) {
   const cc = c.charCodeAt(0)
   if (cc === 32) return 78
   if (cc === 44) return 81
+  if (cc === 39) return 84
   return (cc - 65) * 3
 }

@@ -29,3 +29,15 @@ function start ([s, f]) {
   font = f
   render()
 }
+
+
+
+/*
+
+TODO
+
+- maybe dont try to do clever line length regex, just use \n in the strings?
+- end of message character on text rendering?
+
+
+*/

@@ -19,6 +19,9 @@ function clear () {
 
 function drawUI () {
   drawInventory()
+  if (currentText) {
+    drawText(currentText)
+  }
 }
 
 function drawInventory () {

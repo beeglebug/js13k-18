@@ -1,4 +1,10 @@
-function move () {
+function input () {
+
+  if (mode === MODE_TEXT) {
+    if (isDown(KEY_ENTER)) nextText()
+    return
+  }
+
   let x = player.x
   let y = player.y
 
@@ -7,19 +13,23 @@ function move () {
   if (isDown(KEY_S)) y += 1
   if (isDown(KEY_D)) x += 1
 
-  const tile = getTileAt(x, y)
-  if (tile && tile.solid) return
-
   const item = getItemAt(x, y)
   if (item) {
     if (item.collectable) pickUpItem(item)
-    if (item.type === ITEM_DOOR && hasInventoryItem(ITEM_KEY)) {
-      const inv = getInventoryItem(ITEM_KEY)
-      consumeInventoryItem(inv)
-      destroyItem(item)
+    if (item.type === ITEM_DOOR) {
+      const key = getInventoryItem(ITEM_KEY)
+      if (key) {
+        consumeInventoryItem(key)
+        destroyItem(item)
+      }
+    } else if (item.type === ITEM_SIGN) {
+      showText(item.text)
     }
     if (item.solid) return
   }
+
+  const tile = getTileAt(x, y)
+  if (tile && tile.solid) return
 
   let mapChanged = false
 
@@ -53,10 +63,6 @@ function consumeInventoryItem (item) {
 
 function getInventoryItem (type) {
   return player.inventory.find(item => item.type === type)
-}
-
-function hasInventoryItem (type) {
-  return player.inventory.some(item => item.type === type)
 }
 
 function pickUpItem (item) {

@@ -1,22 +1,15 @@
 const spaceToNull = char => char === ' ' ? null : char
 
-/**
- * TODO pack / unpack
- * eg: 1:0:8:16:1
- */
 const tileData = {
   0: {},
   1: { sy: 0, sx: 8, solid: true },
   2: { sy: 0, sx: 16, solid: true },
 }
 
-/**
- * TODO pack / unpack
- * eg: K:8:8
- */
 const itemMap = {
-  [ITEM_KEY]: { type: ITEM_KEY, sx: 8, sy: 8, collectable: true, solid: false },
-  [ITEM_DOOR]: { type: ITEM_DOOR, sx: 16, sy: 8, collectable: false, solid: true },
+  [ITEM_KEY]: () => ({ type: ITEM_KEY, sx: 8, sy: 8, collectable: true, solid: false }),
+  [ITEM_DOOR]: () => ({ type: ITEM_DOOR, sx: 16, sy: 8, collectable: false, solid: true }),
+  [ITEM_SIGN]: ([text]) => ({ type: ITEM_SIGN, sx: 24, sy: 8, text: text.split('|') }),
 }
 
 const rooms = [
@@ -95,7 +88,9 @@ const rooms = [
     '1000000000000001' +
     '1000000000000001' +
     '2222222222222222',
-    items: []
+    items: [
+      'S:12:0:Important information about your quest'
+    ]
   },
   { // TEMPLATE
     data:
@@ -131,9 +126,9 @@ function parseWorld (str) {
 
 
 function parseItem (str) {
-  const [id, x, y] = str.split(':')
+  const [id, x, y, ...rest] = str.split(':')
   return {
-    ...itemMap[id],
+    ...itemMap[id](rest),
     x: +x,
     y: +y
   }

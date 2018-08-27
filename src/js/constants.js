@@ -7,3 +7,4 @@ const MAP_WIDTH = 16
 
 const ITEM_KEY = 'K'
 const ITEM_DOOR = 'D'
+const ITEM_SIGN = 'S'
