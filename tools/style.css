@@ -4,11 +4,12 @@ body {
     color: #FFF;
     font-family: monospace;
 }
+
 #container {
     background-color: #111;
     width: 715px;
     padding: 10px;
-    border: 1px solid #666;
+    border: 1px solid #333;
     margin: 50px auto;
     display: flex;
     flex-direction: row;
@@ -16,14 +17,15 @@ body {
 }
 
 #output {
-    background-color: #333;
-    border-color: #666666;
+    background-color: #444;
+    border: none;
     padding: 10px;
     width: 200px;
-    height: 100px;
-    color: #666666;
+    height: 30px;
+    color: #666;
     outline: 0;
     resize: none;
+    margin-bottom: 10px;
 }
 
 .right {
@@ -32,22 +34,33 @@ body {
 }
 
 #map {
-    border: 1px solid #666;
+    border: 1px solid #333;
     margin-bottom: 10px;
 }
 
 .palette-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+}
+
+.palette-container button {
+    margin-right: 10px;
 }
 
 button {
     height: 32px;
+    border: none;
+    background-color: #333;
+    color: #BBB;
+    padding: 0 10px;
 }
 
 #mapPos {
-    border: 1px solid #666;
     margin-bottom: 10px;
     padding: 5px 10px;
+    border: 1px solid #333;
+}
+
+#controls {
+    margin-top: 10px;
 }

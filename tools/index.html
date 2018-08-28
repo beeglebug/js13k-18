@@ -8,15 +8,17 @@
     <div class="left">
         <canvas id="map"></canvas>
         <div class="palette-container">
-            <canvas id="palette"></canvas>
             <button id="erase">erase</button>
+            <canvas id="palette"></canvas>
         </div>
     </div>
     <div class="right">
         <div id="mapPos">x:0 y:0</div>
         <textarea id="output"></textarea>
-        <button id="copy">copy</button>
-        <label for="grid">grid<input type="checkbox" name="grid" checked></label>
+        <button id="copy">copy to clipboard</button>
+        <div id="controls">
+            <label for="showGrid"><input type="checkbox" id="showGrid" name="showGrid" checked> grid</label>
+        </div>
     </div>
 </div>
 <script src="../src/js/constants.js"></script>

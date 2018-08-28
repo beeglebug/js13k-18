@@ -3,7 +3,7 @@ const MAP_SIZE = 15
 
 const output = document.querySelector('#output')
 
-let map = rooms[0]
+let map = rooms[1]
 let mapMouse = {
   x: 0,
   y: 0
