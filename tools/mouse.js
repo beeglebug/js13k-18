@@ -44,7 +44,11 @@ function bindMouse () {
 
 function paintTile (x, y) {
   const type = currentTile
-  map.data[y][x] = { type, x, y, sx: 0, sy: 0, ...(tileData[type] || {}) }
+  if (type === null) {
+    map.data[y][x] = null
+  } else {
+    map.data[y][x] = {type, x, y, sx: 0, sy: 0, ...(tileData[type] || {})}
+  }
   update()
 }
 
