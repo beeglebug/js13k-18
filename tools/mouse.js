@@ -1,12 +1,3 @@
-let mapMouse = {
-  x: 0,
-  y: 0
-}
-
-let painting = false
-
-let currentTile = "1"
-
 const mapPos = document.querySelector('#mapPos')
 
 function bindMouse () {

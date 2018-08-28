@@ -42,7 +42,7 @@ function renderPalette () {
 }
 
 function renderSelected () {
-  if (!currentTile) return
+  if (currentTile === null) return
   const tile = tileData[currentTile]
   paletteCtx.translate(0.5, 0.5)
   paletteCtx.strokeStyle = '#FFFFFF'

@@ -11,3 +11,9 @@ eraseBtn.addEventListener('click', e => {
   currentTile = null
   update()
 })
+
+const gridCbx = document.querySelector('[name=grid]')
+gridCbx.addEventListener('change', e => {
+  showGrid = e.target.checked
+  update()
+})
