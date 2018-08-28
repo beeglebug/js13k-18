@@ -6,7 +6,7 @@ const ctx = canvas.getContext('2d')
 const player = {
   x: 7,
   y: 12,
-  wx: 0,
+  wx: 1,
   wy: 2,
   inventory: [],
   health: 3
