@@ -61,6 +61,6 @@ button {
     border: 1px solid #333;
 }
 
-#controls {
-    margin-top: 10px;
+label {
+    margin: 10px 0;
 }

@@ -3,7 +3,8 @@ const MAP_SIZE = 15
 
 const output = document.querySelector('#output')
 
-let map = rooms[1]
+let currentRoom = 0
+let map = rooms[currentRoom]
 let mapMouse = {
   x: 0,
   y: 0
@@ -44,7 +45,22 @@ let showGrid = true
 function start () {
   mapCtx = setupCtx('#map', MAP_SIZE * TILE_SIZE * SCALE, MAP_SIZE * TILE_SIZE * SCALE)
   paletteCtx = setupCtx('#palette', sprites.width * SCALE + 1, TILE_SIZE * SCALE + 1)
+  fillSelect()
   bindMouse()
   render()
 }
 
+function fillSelect () {
+  const select = document.querySelector('#rooms')
+  rooms.forEach((room, ix) => {
+    const option = document.createElement('option')
+    option.innerHTML = room.name
+    option.value = ix
+    select.append(option)
+  })
+  select.addEventListener('change', e => {
+    currentRoom = e.target.value
+    map = rooms[currentRoom]
+    update()
+  })
+}
