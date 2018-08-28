@@ -25,7 +25,7 @@ function updateOutput () {
 
 updateOutput()
 
-function ctx (selector, w, h) {
+function setupCtx (selector, w, h) {
   const canvas = document.querySelector(selector)
   canvas.width = w
   canvas.height = h
@@ -43,11 +43,15 @@ const sprites = new Image()
 sprites.src = '../src/sprites.png'
 sprites.onload = start
 
-const mapCtx = ctx('#map', MAP_SIZE * TILE_SIZE * SCALE, MAP_SIZE * TILE_SIZE * SCALE)
+let mapCtx
+let paletteCtx
 
 let showGrid = true
 
 function start () {
+  mapCtx = setupCtx('#map', MAP_SIZE * TILE_SIZE * SCALE, MAP_SIZE * TILE_SIZE * SCALE)
+  paletteCtx = setupCtx('#palette', sprites.width * SCALE + 1, sprites.height * SCALE + 1)
+  bindMouse()
   render()
 }
 
@@ -57,24 +61,23 @@ function render () {
   mapCtx.fillRect(0, 0, 600, 600)
 
   renderMap()
-  renderGrid(MAP_SIZE, MAP_SIZE, TILE_SIZE)
-  //mapCtx.drawImage(sprites, 0, 512)
+  renderPalette()
 }
 
-function renderGrid (w, h, s) {
+function renderGrid (ctx, color, w, h, s) {
   if (!showGrid) return
-  mapCtx.translate(0.5, 0.5)
-  mapCtx.strokeStyle = '#333333'
-  for (let y = 0; y <= w; y++) {
-    mapCtx.moveTo(0, y * s * SCALE)
-    mapCtx.lineTo(w * s * SCALE, y * s * SCALE)
+  ctx.translate(0.5, 0.5)
+  ctx.strokeStyle = color
+  for (let y = 0; y <= h; y++) {
+    ctx.moveTo(0, y * s)
+    ctx.lineTo(w * s, y * s)
   }
   for (let x = 0; x <= w; x++) {
-    mapCtx.moveTo(x * s * SCALE, 0)
-    mapCtx.lineTo(x * s * SCALE, w * s * SCALE)
+    ctx.moveTo(x * s, 0)
+    ctx.lineTo(x * s, h * s)
   }
-  mapCtx.stroke()
-  mapCtx.translate(-0.5, -0.5)
+  ctx.stroke()
+  ctx.translate(-0.5, -0.5)
 }
 
 function renderMap () {
@@ -85,5 +88,21 @@ function renderMap () {
       mapCtx.drawImage(sprites, tile.sx, tile.sy, TILE_SIZE, TILE_SIZE, x * TILE_SIZE * SCALE, y * TILE_SIZE * SCALE, TILE_SIZE * SCALE, TILE_SIZE * SCALE)
     }
   }
+  renderGrid(mapCtx, '#333333', MAP_SIZE, MAP_SIZE, TILE_SIZE * SCALE)
 }
 
+function renderPalette () {
+  const w = sprites.width * SCALE
+  const h = TILE_SIZE * SCALE
+  paletteCtx.drawImage(sprites, 0, 0, sprites.width, TILE_SIZE, 0, 0, w, h)
+  renderGrid(paletteCtx, '#444444', w, 1, TILE_SIZE * SCALE)
+  renderSelected()
+}
+
+function renderSelected () {
+  const tile = tileData[currentTile]
+  paletteCtx.translate(0.5, 0.5)
+  paletteCtx.strokeStyle = '#FFFFFF'
+  paletteCtx.strokeRect(tile.sx * SCALE, tile.sy * SCALE, TILE_SIZE * SCALE, TILE_SIZE * SCALE)
+  paletteCtx.translate(-0.5, -0.5)
+}

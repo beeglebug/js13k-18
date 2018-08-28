@@ -1,9 +1,9 @@
 const spaceToNull = char => char === ' ' ? null : char
 
 const tileData = {
-  0: {},
-  1: { sy: 0, sx: 8, solid: true },
-  2: { sy: 0, sx: 16, solid: true },
+  0: { type: 0, sy: 0, sx: 0 },
+  1: { type: 1, sy: 0, sx: 8, solid: true },
+  2: { type: 2, sy: 0, sx: 16, solid: true },
 }
 
 const itemMap = {
@@ -146,7 +146,7 @@ function parseMap (map) {
       let type = tiles[ix]
       let tile = null
       if (type !== null) {
-        tile = { type, x, y, sx: 0, sy: 0, collide: false, ...(tileData[type] || {}) }
+        tile = { x, y, collide: false, ...(tileData[type] || {}) }
       }
       row.push(tile)
     }
