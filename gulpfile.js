@@ -23,7 +23,7 @@ gulp.task('compile', ['clean'], () => gulp
   .pipe(htmlSrc())
   .pipe(concat('app.js'))
   .pipe(removeCode({ production: true }))
-  .pipe(uglify())
+  .pipe(uglify({ toplevel: true }))
   .pipe(gulp.dest('build'))
 )
 
