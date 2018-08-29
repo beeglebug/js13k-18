@@ -1,4 +1,5 @@
 let pressed = {}
+let pressedLastTick = {}
 
 const KEY_W = 87
 const KEY_A = 65
@@ -13,8 +14,7 @@ addEventListener('blur', onBlur)
 function onKeydown (e) {
   if (pressed[e.which]) return
   pressed[e.which] = true
-  input()
-  render()
+  pressedLastTick[e.which] = true
 }
 
 function onKeyup (e) {
@@ -26,3 +26,5 @@ function onBlur () {
 }
 
 const isDown = key => !!pressed[key]
+const wasDown = key => !!pressedLastTick[key]
+const down = key => isDown(key) || wasDown(key)

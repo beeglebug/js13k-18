@@ -1,17 +1,46 @@
+let lastMove = 0
+let mapEntry = {
+  x: 0,
+  y: 0
+}
+
 function input () {
 
-  if (mode === MODE_TEXT) {
-    if (isDown(KEY_SPACE)) nextText()
+  if (state === STATE_FALLING || state === STATE_DEAD) return
+
+  if (state === STATE_READING) {
+    if (down(KEY_SPACE)) nextText()
     return
   }
+
+  let moved = false
 
   let x = player.x
   let y = player.y
 
-  if (isDown(KEY_W)) y -= 1
-  else if (isDown(KEY_A)) x -= 1
-  else if (isDown(KEY_S)) y += 1
-  else if (isDown(KEY_D)) x += 1
+  if (down(KEY_W)) {
+    moved = true
+    y -= 1
+  }
+  else if (down(KEY_A)) {
+    moved = true
+    x -= 1
+  }
+  else if (down(KEY_S)) {
+    moved = true
+    y += 1
+  }
+  else if (down(KEY_D)) {
+    moved = true
+    x += 1
+  }
+
+  if (!moved) return
+
+  const now = +new Date
+  //if (now - lastMove < TICK_INTERVAL) return
+
+  lastMove = now
 
   const item = getItemAt(x, y)
   if (item) {
@@ -31,7 +60,12 @@ function input () {
   }
 
   const tile = getTileAt(x, y)
-  if (tile && tile.solid) return
+  if (tile) {
+    if (tile.solid) return
+    if (tile.type === '0') {
+      state = STATE_FALLING
+    }
+  }
 
   let mapChanged = false
 
@@ -55,8 +89,11 @@ function input () {
     if (!tile) return // empty tiles not at screen edge
   }
 
-
-  if (mapChanged) map = getCurrentRoom()
+  if (mapChanged) {
+    map = getCurrentRoom()
+    mapEntry.x = x
+    mapEntry.y = y
+  }
 
 
   player.x = x

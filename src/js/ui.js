@@ -1,10 +1,7 @@
 let textStack = []
 let currentText = undefined
 
-const MODE_MOVE = 0
-const MODE_TEXT = 1
-
-let mode = MODE_MOVE
+let state = STATE_MOVING
 
 function showText (text) {
   if (!Array.isArray(text)) text = [text]
@@ -15,8 +12,8 @@ function showText (text) {
 function nextText () {
   currentText = textStack.shift()
   if (currentText) {
-    mode = MODE_TEXT
+    state = STATE_READING
   } else {
-    mode = MODE_MOVE
+    state = STATE_MOVING
   }
 }

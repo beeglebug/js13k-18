@@ -12,12 +12,12 @@ function render () {
 }
 
 function clear () {
-  ctx.fillStyle = '#000000'
+  ctx.fillStyle = '#141020'
   ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT)
 }
 
 function drawUI () {
-  ctx.fillStyle = '#20213E'
+  ctx.fillStyle = '#26243a'
   ctx.fillRect(0, 7, GAME_WIDTH, 1)
   drawHealth()
   drawInventory()
@@ -69,8 +69,9 @@ function drawTile ({ x, y, sx, sy }) {
 }
 
 function drawPlayer () {
+  if (state === STATE_DEAD) return
   drawSprite(
-    0, 8,
+    player.sx, 8,
     player.x * TILE_SIZE,
     player.y * TILE_SIZE
   )
