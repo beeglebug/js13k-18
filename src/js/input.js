@@ -56,7 +56,7 @@ function input () {
   }
 
 
-  if (mapChanged) map = getMap()
+  if (mapChanged) map = getCurrentRoom()
 
 
   player.x = x

@@ -1,4 +1,4 @@
-function getMap () {
+function getCurrentRoom () {
   const row = world[player.wy]
   if (!row) return
   const room = row[player.wx]

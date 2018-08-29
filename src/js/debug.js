@@ -22,7 +22,7 @@ function debugText (text) {
 }
 
 function debugItems () {
-  map = getMap()
+  map = getCurrentRoom()
   if (!map || !map.items) return
   ctx.fillStyle = 'rgba(0, 255, 0, 0.4)'
   for(const item of map.items) {
@@ -31,7 +31,7 @@ function debugItems () {
 }
 
 function debugTileCollision () {
-  map = getMap()
+  map = getCurrentRoom()
   if (!map) return
   ctx.fillStyle = 'rgba(255, 0, 0, 0.5)'
   for (let y = 0; y < MAP_HEIGHT; y++) {

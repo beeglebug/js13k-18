@@ -12,7 +12,7 @@ const player = {
   health: 3
 }
 
-let map = getMap()
+let map = getCurrentRoom()
 let sprites, font
 
 Promise.all([loadImg('./sprites.png'), loadImg('./font.png')]).then(start)
