@@ -9,7 +9,8 @@ const player = {
   wx: 1,
   wy: 2,
   inventory: [],
-  health: 3
+  health: 2,
+  maxHealth: 3
 }
 
 let map = getCurrentRoom()

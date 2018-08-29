@@ -27,8 +27,9 @@ function drawUI () {
 }
 
 function drawHealth () {
-  for (let x = 0; x < player.health; x++) {
-    drawSprite(32, 8, x * 8, 0)
+  for (let i = 0; i < player.maxHealth; i++) {
+    const sx = i < player.health ? 32 : 40
+    drawSprite(sx, 8, i * 8, 0)
   }
 }
 
