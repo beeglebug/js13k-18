@@ -12,7 +12,7 @@ function render () {
 }
 
 function clear () {
-  ctx.fillStyle = '#141020'
+  ctx.fillStyle = BLACK
   ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT)
 }
 

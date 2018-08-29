@@ -12,9 +12,9 @@ function drawText (text) {
   let bh = (lines.length * lineHeight) + (pad * 2) - 2
   if (bh %2 !== 0) bh += 1
 
-  const bx = (128 - bw) / 2
-  const by = (128 - bh) / 2
-  ctx.fillStyle = '#000000'
+  const bx = (GAME_WIDTH - bw) / 2
+  const by = (GAME_HEIGHT - bh) / 2
+  ctx.fillStyle = BLACK
   ctx.fillRect(bx, by, bw, bh)
 
   lines.forEach((line, y) => line.split('').forEach((c, x) => {
