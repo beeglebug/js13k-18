@@ -10,28 +10,6 @@
          "width":15,
          "x":0,
          "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "name":"objects",
-         "objects":[
-                {
-                 "gid":9,
-                 "height":8,
-                 "id":3,
-                 "name":"spawn",
-                 "rotation":0,
-                 "type":"spawn",
-                 "visible":true,
-                 "width":8,
-                 "x":56,
-                 "y":104
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
         }],
  "nextobjectid":6,
  "orientation":"orthogonal",
