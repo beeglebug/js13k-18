@@ -9,9 +9,9 @@ function input () {
   let y = player.y
 
   if (isDown(KEY_W)) y -= 1
-  if (isDown(KEY_A)) x -= 1
-  if (isDown(KEY_S)) y += 1
-  if (isDown(KEY_D)) x += 1
+  else if (isDown(KEY_A)) x -= 1
+  else if (isDown(KEY_S)) y += 1
+  else if (isDown(KEY_D)) x += 1
 
   const item = getItemAt(x, y)
   if (item) {

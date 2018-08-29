@@ -11,6 +11,7 @@ addEventListener('keyup', onKeyup)
 addEventListener('blur', onBlur)
 
 function onKeydown (e) {
+  if (pressed[e.which]) return
   pressed[e.which] = true
   input()
   render()
