@@ -16,3 +16,17 @@ const STATE_DEAD = 3
 const STATE_MENU = 4
 
 const BLACK = '#141020'
+
+const TICK_INTERVAL = 200
+
+const KEY_W = 87
+const KEY_A = 65
+const KEY_S = 83
+const KEY_D = 68
+const KEY_SPACE = 32
+
+const sprites = new Image()
+const font = new Image()
+
+const canvas = document.querySelector('canvas')
+const ctx = canvas.getContext('2d')

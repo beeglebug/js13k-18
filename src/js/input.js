@@ -1,9 +1,3 @@
-let lastMove = 0
-let mapEntry = {
-  x: 0,
-  y: 0
-}
-
 function input () {
 
   if (state === STATE_DEAD) {

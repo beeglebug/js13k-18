@@ -1,34 +1,12 @@
-const canvas = document.querySelector('canvas')
-canvas.width = GAME_WIDTH
-canvas.height = GAME_HEIGHT
-const ctx = canvas.getContext('2d')
-
-let player = {}
-
-let map
-let sprites, font
-
-const TICK_INTERVAL = 200
-
-Promise.all([loadImg('./sprites.png'), loadImg('./font.png')]).then(start)
-
-function loadImg (src) {
-  const img = new Image()
-  return new Promise(done => {
-    img.onload = () => done(img)
-    img.src = src
-  })
-}
-
-function start ([s, f]) {
-  sprites = s
-  font = f
+function start () {
+  sprites.src = './sprites.png'
+  font.src = './font.png'
+  canvas.width = GAME_WIDTH
+  canvas.height = GAME_HEIGHT
   reset()
   render()
   setInterval(tick, TICK_INTERVAL)
 }
-
-let fallCounter = 0
 
 function tick() {
   input()
@@ -80,3 +58,5 @@ function resetPlayer () {
     maxHealth: 3
   }
 }
+
+start()
