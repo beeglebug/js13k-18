@@ -18,5 +18,14 @@
         <script src="js/debug.js"></script>
         <script src="js/index.js"></script>
         <!-- endbuild -->
+        <!-- removeIf(production) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-17363771-9"></script>
+        <script data-ignore=true>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-17363771-9');
+        </script>
+        <!-- endRemoveIf(production) -->
     </body>
 </html>
