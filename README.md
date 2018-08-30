@@ -1,4 +1,6 @@
 # js13k-18
-js13k 2018 WIP entry
+My js13k 2018 entry (work in progress)
 
-play current version at https://beeglebug.github.io/js13k-18/src/
+You can play the current version at: [https://beeglebug.github.io/js13k-18/src/](https://beeglebug.github.io/js13k-18/src/)
+
+WASD to move, space to skip text
