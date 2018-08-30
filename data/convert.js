@@ -35,6 +35,6 @@ function parseObject (object) {
 // 'S|7|3|An ancient carving\nYou can\'t decipher it'
 
 function writeOutput () {
-  const output = 'let rooms = ' + JSON.stringify(rooms)
+  const output = 'let roomData = ' + JSON.stringify(rooms)
   fs.writeFileSync('./src/js/rooms.js', output)
 }

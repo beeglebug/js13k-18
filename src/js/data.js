@@ -20,14 +20,20 @@ const itemMap = {
   [ITEM_SIGN]: ([text]) => ({ type: ITEM_SIGN, sx: 24, sy: 8, text: text.split('|') }),
 }
 
-let world = [
+let rooms
+let world
+
+let worldData = [
   ' 3 ',
   '412',
   ' 0 ',
 ]
 
-rooms = rooms.map(parseRoom)
-world = world.map(parseWorld)
+function resetMap () {
+  rooms = roomData.map(parseRoom)
+  world = worldData.map(parseWorld)
+  map = getCurrentRoom()
+}
 
 function parseWorld (str) {
   return str.split('').map(spaceToNull)

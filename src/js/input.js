@@ -6,7 +6,14 @@ let mapEntry = {
 
 function input () {
 
-  if (state === STATE_FALLING || state === STATE_DEAD) return
+  if (state === STATE_FALLING) return
+  if (state === STATE_DEAD) {
+    if (down(KEY_SPACE)) {
+      nextText()
+      reset()
+    }
+    return
+  }
 
   if (state === STATE_READING) {
     if (down(KEY_SPACE)) nextText()
