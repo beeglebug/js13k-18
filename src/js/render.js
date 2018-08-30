@@ -1,5 +1,6 @@
 function render () {
   clear()
+  if (state === STATE_MENU) return drawMenu()
   ctx.translate(0, 8)
   drawMap()
   drawItems()
@@ -89,4 +90,8 @@ function drawSprite (sx, sy, x, y) {
     TILE_SIZE,
     TILE_SIZE
   )
+}
+
+function drawMenu () {
+  drawText('press space to start')
 }

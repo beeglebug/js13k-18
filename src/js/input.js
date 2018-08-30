@@ -6,19 +6,21 @@ let mapEntry = {
 
 function input () {
 
-  if (state === STATE_FALLING) return
   if (state === STATE_DEAD) {
     if (down(KEY_SPACE)) {
       nextText()
+      state = STATE_MENU
       reset()
     }
     return
   }
 
-  if (state === STATE_READING) {
+  if (state === STATE_READING || state === STATE_MENU) {
     if (down(KEY_SPACE)) nextText()
     return
   }
+
+  if (state !== STATE_MOVING) return
 
   let moved = false
 

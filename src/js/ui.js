@@ -1,7 +1,6 @@
 let textStack = []
 let currentText = undefined
-
-let state = STATE_MOVING
+let state = STATE_MENU
 
 function showText (text) {
   if (!Array.isArray(text)) text = [text]
