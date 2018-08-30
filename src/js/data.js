@@ -39,10 +39,9 @@ function parseWorld (str) {
   return str.split('').map(spaceToNull)
 }
 
-function parseRoom (room) {
-  const tiles = room.data.split('').map(spaceToNull)
-
-  room.data = []
+function parseRoom (input) {
+  const tiles = input.data.split('').map(spaceToNull)
+  const room = { data: [] }
 
   for (let y = 0; y < MAP_HEIGHT; y++) {
     const row = []
