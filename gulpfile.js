@@ -8,6 +8,8 @@ const removeCode = require('gulp-remove-code')
 const zip = require('gulp-zip')
 const imagemin = require('gulp-imagemin')
 
+let outDir = 'build'
+
 gulp.task('clean', () => gulp
   .src(['build/*', 'archive.zip'], { read: false })
   .pipe(clean())
@@ -15,7 +17,7 @@ gulp.task('clean', () => gulp
 
 gulp.task('copy', ['clean'], () => gulp
   .src(['src/style.css'])
-  .pipe(gulp.dest('build'))
+  .pipe(gulp.dest(outDir))
 )
 
 gulp.task('compile', ['clean'], () => gulp
@@ -24,16 +26,17 @@ gulp.task('compile', ['clean'], () => gulp
   .pipe(concat('app.js'))
   .pipe(removeCode({ production: true }))
   .pipe(uglify({ toplevel: true }))
-  .pipe(gulp.dest('build'))
+  .pipe(gulp.dest(outDir))
 )
 
 gulp.task('html', ['clean'], () => gulp
   .src('src/index.html')
+  .pipe(removeCode({ production: true }))
   .pipe(htmlreplace({ js: 'app.js' }))
-  .pipe(gulp.dest('build'))
+  .pipe(gulp.dest(outDir))
 )
 
-gulp.task('zip', ['copy', 'compile', 'html'], () =>
+gulp.task('zip', ['copy', 'compile', 'html', 'crush'], () =>
   gulp.src('build/*')
     .pipe(zip('archive.zip'))
     .pipe(gulp.dest(''))
@@ -44,7 +47,7 @@ gulp.task('crush', () =>
     .pipe(imagemin([
       imagemin.optipng({ optimizationLevel: 7 })
     ]))
-    .pipe(gulp.dest('build'))
+    .pipe(gulp.dest(outDir))
 )
 
 gulp.task('build', ['clean', 'copy', 'compile', 'html', 'crush', 'zip'])
