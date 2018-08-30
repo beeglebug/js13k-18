@@ -35,10 +35,10 @@ function tick() {
   pressedLastTick = {}
   if (state === STATE_FALLING) {
     fallCounter += TICK_INTERVAL
-    if (fallCounter > 600) {
+    if (fallCounter > 400) {
       player.sx = 48
     }
-    if (fallCounter > 1400) {
+    if (fallCounter > 1000) {
       fallCounter = 0
       if (damagePlayer(1)) return
       player.sx = 0
