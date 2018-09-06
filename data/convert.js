@@ -7,7 +7,10 @@ const rooms = []
 glob('data/*.json', (_, files) => {
   files.forEach(file => {
     const json = fs.readFileSync(file)
-    parseMap(JSON.parse(json))
+    const [x, y] = file.replace('.json', '').replace('data/', '').split('_')
+    const room = parseMap(JSON.parse(json))
+    if (!rooms[y]) rooms[y] = []
+    rooms[y][x] = room
   })
   writeOutput()
 })
@@ -22,7 +25,7 @@ function parseMap (map) {
       room.items = layer.objects.map(parseObject)
     }
   })
-  rooms.push(room)
+  return room
 }
 
 function parseObject (object) {
