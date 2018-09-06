@@ -52,7 +52,7 @@ function parseRoom (input) {
     room.data.push(row)
   }
 
-  room.items = room.items ? room.items.map(parseItem) : []
+  room.items = input.items ? input.items.map(parseItem) : []
 
   return room
 }
