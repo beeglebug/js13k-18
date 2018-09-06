@@ -51,8 +51,8 @@ function resetPlayer () {
     x: 7,
     y: 7,
     sx: 0,
-    wx: 1,
-    wy: 1,
+    wx: 2,
+    wy: 4,
     inventory: [],
     health: 3,
     maxHealth: 3

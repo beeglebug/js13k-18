@@ -5,14 +5,7 @@ let mapEntry = {
   y: 0
 }
 
-let rooms
-let world
-
-let worldData = [
-  ' 3 ',
-  '412',
-  ' 0 ',
-]
+let rooms = []
 
 let pressed = {}
 let pressedLastTick = {}

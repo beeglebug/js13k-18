@@ -1,9 +1,7 @@
 function getCurrentRoom () {
-  const row = world[player.wy]
+  const row = rooms[player.wy]
   if (!row) return
-  const room = row[player.wx]
-  if (!room) return
-  return rooms[room]
+  return row[player.wx]
 }
 
 function getTileAt (x, y) {

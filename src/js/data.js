@@ -21,14 +21,15 @@ const itemMap = {
 }
 
 function resetMap () {
-  rooms = roomData.map(parseRoom)
-  world = worldData.map(parseWorld)
+  for (let y = 0; y < roomData.length; y++) {
+    for (let x = 0; x < roomData[y].length; x++) {
+      if(!rooms[y]) rooms[y] = []
+      rooms[y][x] = parseRoom(roomData[y][x])
+    }
+  }
   map = getCurrentRoom()
 }
 
-function parseWorld (str) {
-  return str.split('').map(spaceToNull)
-}
 
 function parseRoom (input) {
   const tiles = input.data.split('').map(spaceToNull)
