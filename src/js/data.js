@@ -15,10 +15,10 @@ const tileData = {
 }
 
 const itemMap = {
-  [ITEM_SPAWN]: () => ({ type: ITEM_SPAWN, collectable: false, solid: false }),
-  [ITEM_KEY]: () => ({ type: ITEM_KEY, sx: 8, sy: 8, collectable: true, solid: false }),
-  [ITEM_DOOR]: () => ({ type: ITEM_DOOR, sx: 16, sy: 8, collectable: false, solid: true }),
-  [ITEM_SIGN]: ([text]) => ({ type: ITEM_SIGN, sx: 24, sy: 8, text: text.split('|') }),
+  [ITEM_SPAWN]: Spawn,
+  [ITEM_KEY]: Key,
+  [ITEM_DOOR]: Door,
+  [ITEM_SIGN]: Sign
 }
 
 function resetMap () {
@@ -52,16 +52,13 @@ function parseRoom (data, x, y) {
     room.data.push(row)
   }
 
-  room.items = input.items ? input.items.map(parseItem) : []
+  room.items = input.items ? input.items.map(parseItem).filter(i => i) : []
 
   return room
 }
 
 function parseItem (str) {
-  const [type, x, y, ...rest] = str.split('|')
-  return {
-    ...itemMap[type](rest),
-    x: +x,
-    y: +y
-  }
+  const [type, ...rest] = str.split('|')
+  if (!itemMap[type]) return console.warn('unknown item type', type)
+  return new itemMap[type](...rest)
 }

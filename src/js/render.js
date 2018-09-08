@@ -1,15 +1,15 @@
 function render () {
   clear()
-  if (state === STATE_MENU) return drawMenu()
+  if (state === STATE_MENU) return renderMenu()
   ctx.translate(0, 8)
-  drawMap()
-  drawItems()
-  drawPlayer()
+  renderMap()
+  renderItems()
+  renderPlayer()
 // removeIf(production)
   debugRender()
 // endRemoveIf(production)
   ctx.translate(0, -8)
-  drawUI()
+  renderUI()
 }
 
 function clear () {
@@ -17,52 +17,53 @@ function clear () {
   ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT)
 }
 
-function drawUI () {
+function renderUI () {
   ctx.fillStyle = '#26243a'
   ctx.fillRect(0, 7, GAME_WIDTH, 1)
-  drawHealth()
-  drawInventory()
+  renderHealth()
+  renderInventory()
   if (currentText) {
-    drawText(currentText)
+    renderText(currentText)
   }
 }
 
-function drawHealth () {
+function renderHealth () {
   for (let i = 0; i < player.maxHealth; i++) {
     const sx = i < player.health ? 32 : 40
-    drawSprite(sx, 8, i * 8, 0)
+    renderSprite(sprites, sx, 0, i * 8, 0)
   }
 }
 
-function drawInventory () {
+function renderInventory () {
   player.inventory.forEach(item => {
     const x = (MAP_WIDTH - 1) * TILE_SIZE
-    drawSprite(item.sx, item.sy, x, 0)
+    renderSprite(sprites, item.sx, item.sy, x, 0)
   })
 }
 
-function drawItems () {
+function renderItems () {
   if (!map) return
   map.items.forEach(item => {
     if (item.sx === undefined) return
-    drawSprite(item.sx, item.sy, item.x * TILE_SIZE, item.y * TILE_SIZE)
+    renderSprite(sprites, item.sx, item.sy, item.x * TILE_SIZE, item.y * TILE_SIZE)
   })
 }
 
-function drawMap () {
+function renderMap () {
   if (!map) return
   for (let y = 0; y < MAP_HEIGHT; y++) {
     for (let x = 0; x < MAP_WIDTH; x++) {
       const tile = map.data[y][x]
       if (!tile) continue
-      drawTile(tile)
+      renderTile(tile)
     }
   }
 }
 
 
-function drawTile ({ x, y, sx, sy }) {
-  drawSprite(
+function renderTile ({ x, y, sx, sy }) {
+  renderSprite(
+    tiles,
     sx,
     sy,
     x * TILE_SIZE,
@@ -70,18 +71,19 @@ function drawTile ({ x, y, sx, sy }) {
   )
 }
 
-function drawPlayer () {
+function renderPlayer () {
   if (state === STATE_DEAD) return
-  drawSprite(
-    player.sx, 8,
+  renderSprite(
+    sprites,
+    player.sx, 0,
     player.x * TILE_SIZE,
     player.y * TILE_SIZE
   )
 }
 
-function drawSprite (sx, sy, x, y) {
+function renderSprite (image, sx, sy, x, y) {
   ctx.drawImage(
-    sprites,
+    image,
     sx,
     sy,
     TILE_SIZE,
@@ -93,6 +95,6 @@ function drawSprite (sx, sy, x, y) {
   )
 }
 
-function drawMenu () {
-  drawText('press space to start')
+function renderMenu () {
+  renderText('press space to start')
 }

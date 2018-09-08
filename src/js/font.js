@@ -1,4 +1,4 @@
-function drawText (text) {
+function renderText (text) {
   const lines = text.toUpperCase().split('\n').map(str => str.trim())
   const max = [...lines].sort((a, b) => (b.length - a.length))[0].length
 

@@ -27,6 +27,7 @@ const KEY_D = 68
 const KEY_SPACE = 32
 
 const sprites = new Image()
+const tiles = new Image()
 const font = new Image()
 
 const canvas = document.querySelector('canvas')

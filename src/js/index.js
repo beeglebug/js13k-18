@@ -1,4 +1,5 @@
 function start () {
+  tiles.src = './tiles.png'
   sprites.src = './sprites.png'
   font.src = './font.png'
   canvas.width = GAME_WIDTH
