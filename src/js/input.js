@@ -45,7 +45,7 @@ function input () {
 
   lastMove = now
 
-  const item = getItemAt(x, y)
+  const item = map.getItemAt(x, y)
   if (item) {
     if (item.collectable) pickUpItem(item)
     if (item.type === ITEM_DOOR) {
@@ -62,7 +62,7 @@ function input () {
     if (item.solid) return
   }
 
-  const tile = getTileAt(x, y)
+  const tile = map.getTileAt(x, y)
   if (tile) {
     if (tile.solid) return
     if (tile.type === 0) {
@@ -93,9 +93,8 @@ function input () {
   }
 
   if (mapChanged) {
-    map = getCurrentRoom()
-    mapEntry.x = x
-    mapEntry.y = y
+    map = world.getCurrentRoom()
+    map.setEntrance(x, y)
   }
 
 

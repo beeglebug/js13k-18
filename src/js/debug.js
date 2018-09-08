@@ -22,8 +22,6 @@ function debugText (text) {
 }
 
 function debugItems () {
-  map = getCurrentRoom()
-  if (!map || !map.items) return
   ctx.fillStyle = 'rgba(0, 255, 0, 0.4)'
   for(const item of map.items) {
     ctx.fillRect(item.x * TILE_SIZE, item.y * TILE_SIZE, TILE_SIZE, TILE_SIZE)
@@ -31,8 +29,6 @@ function debugItems () {
 }
 
 function debugTileCollision () {
-  map = getCurrentRoom()
-  if (!map) return
   ctx.fillStyle = 'rgba(255, 0, 0, 0.5)'
   for (let y = 0; y < MAP_HEIGHT; y++) {
     for (let x = 0; x < MAP_WIDTH; x++) {

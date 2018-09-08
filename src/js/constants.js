@@ -30,5 +30,8 @@ const sprites = new Image()
 const tiles = new Image()
 const font = new Image()
 
+const player = new Player()
+const world = new World()
+
 const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')

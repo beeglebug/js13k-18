@@ -22,12 +22,14 @@ const itemMap = {
 }
 
 function resetMap () {
+  const rooms = []
   for (let y = 0; y < roomData.length; y++) {
     for (let x = 0; x < roomData[y].length; x++) {
       if(!rooms[y]) rooms[y] = []
       rooms[y][x] = parseRoom(roomData, x, y)
     }
   }
+  world.rooms = rooms
 }
 
 
@@ -35,7 +37,7 @@ function parseRoom (data, x, y) {
 
   const input = data[y][x]
   const tiles = input.data.map(spaceToNull)
-  const room = { x, y, data: [] }
+  const room = new Room(x, y)
 
   for (let y = 0; y < MAP_HEIGHT; y++) {
     const row = []
