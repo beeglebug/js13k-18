@@ -18,45 +18,51 @@ function input () {
 
   if (state !== STATE_MOVING) return
 
-  let moved = false
-
   let x = player.x
   let y = player.y
 
   if (down(KEY_W)) {
-    moved = true
     y -= 1
-  }
-  else if (down(KEY_A)) {
-    moved = true
+  } else if (down(KEY_A)) {
     x -= 1
-  }
-  else if (down(KEY_S)) {
-    moved = true
+  } else if (down(KEY_S)) {
     y += 1
-  }
-  else if (down(KEY_D)) {
-    moved = true
+  } else if (down(KEY_D)) {
     x += 1
   }
 
-  if (!moved) return
-
+  const tile = map.getTileAt(x, y)
   const item = map.getItemAt(x, y)
+
   if (item) {
     item.interact()
     if (item.solid) return
   }
 
-  const tile = map.getTileAt(x, y)
   if (tile) {
     if (tile.solid) return
-    if (tile.type === 0) {
-      state = STATE_FALLING
-    }
+    if (tile.type === 0) player.fall()
   }
 
+  player.goTo(x, y)
+}
+
+function checkItems () {
+
+  const { x, y } = player
+
+  const item = map.getItemAt(x, y)
+
+  if (item) {
+    item.interact()
+  }
+}
+
+function checkMapChange () {
+
   let mapChanged = false
+
+  let { x, y } = player
 
   if (y < 0) {
     player.wy -= 1
@@ -74,8 +80,6 @@ function input () {
     player.wx -= 1
     x = MAP_WIDTH - 1
     mapChanged = true
-  } else {
-    if (!tile) return // empty tiles not at screen edge
   }
 
   if (mapChanged) {
@@ -85,4 +89,3 @@ function input () {
 
   player.goTo(x, y)
 }
-

@@ -56,6 +56,17 @@ class Player {
     this.y = this.previousY
   }
 
+  fall () {
+    this.locked = true
+    this.damage(1)
+    this.sprite.sx = 48
+    setTimeout(() => {
+      this.locked = false
+      this.sprite.sx = 0
+      this.goTo(map.entrance.x, map.entrance.y)
+    }, 600)
+  }
+
   render () {
     if (state === STATE_DEAD) return
     renderSprite(

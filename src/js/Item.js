@@ -9,6 +9,8 @@ class Item {
 
   interact () {}
 
+  update () {}
+
   render () {
     if (!this.sprite.visible) return
     renderSprite(

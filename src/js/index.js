@@ -11,20 +11,10 @@ function start () {
 
 function tick() {
   input()
+  checkMapChange()
+  checkItems()
   pressedLastTick = {}
-  if (state === STATE_FALLING) {
-    fallCounter += TICK_INTERVAL
-    if (fallCounter > 400) {
-      player.sx = 48
-    }
-    if (fallCounter > 1000) {
-      fallCounter = 0
-      if (player.damage(1)) return
-      player.sx = 0
-      state = STATE_MOVING
-      player.goTo(map.entrance.x, map.entrance.y)
-    }
-  }
+  map.items.forEach(item => item.update(TICK_INTERVAL))
   render()
 }
 

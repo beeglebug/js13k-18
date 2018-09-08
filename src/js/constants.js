@@ -16,7 +16,6 @@ const itemMap = {
 
 const STATE_MOVING = 0
 const STATE_READING = 1
-const STATE_FALLING = 2
 const STATE_DEAD = 3
 const STATE_MENU = 4
 
