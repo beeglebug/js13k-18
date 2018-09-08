@@ -12,7 +12,8 @@ function getTileData (type) {
 const tileData = {
   0: { solid: false },
   1: { solid: false },
-  9: { solid: false }
+  9: { solid: false },
+  10: { solid: false, damage: true }
 }
 
 function resetMap () {
@@ -53,8 +54,8 @@ function parseRoom (data, x, y) {
   return room
 }
 
-function parseItem (str) {
-  const [type, ...rest] = str.split('|')
+function parseItem (item) {
+  const [type, ...rest] = item
   if (!itemMap[type]) return console.warn('unknown item type', type)
   return new itemMap[type](...rest)
 }

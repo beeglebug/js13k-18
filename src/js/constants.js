@@ -12,6 +12,8 @@ const itemMap = {
   sign: Sign,
   spikes: Spikes,
   heart: Heart,
+  chest: Chest,
+  lavaBoots: LavaBoots,
 }
 
 const STATE_MOVING = 0

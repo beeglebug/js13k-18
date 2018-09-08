@@ -9,6 +9,7 @@ class Player {
     this.inventory = []
     this.health = 3
     this.maxHealth = 3
+    this.locked = false
 
     // find spawn
     flat(world.rooms).some(room => {
@@ -39,8 +40,8 @@ class Player {
     this.health -= 1
     if (this.health <= 0) return this.kill()
     setTimeout(() => {
-      callback()
       this.locked = false
+      callback()
     }, delay)
   }
 

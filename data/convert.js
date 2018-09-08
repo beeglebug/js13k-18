@@ -73,9 +73,11 @@ function parseMap (map) {
 
 function parseObject (object) {
   const { type, x, y } = object
-  const props = [type, x, y]
-  if (type === 'S') props.push(object.properties.text)
-  return props.join('|')
+  let parsed = [type, x, y]
+  if (object.properties) {
+    parsed = parsed.concat(Object.values(object.properties))
+  }
+  return parsed
 }
 
 // 'S|7|3|An ancient carving\nYou can\'t decipher it'
