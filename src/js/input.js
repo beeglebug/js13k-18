@@ -21,15 +21,23 @@ function input () {
   let x = player.x
   let y = player.y
 
+  let moved = false
+
   if (down(KEY_W)) {
     y -= 1
+    moved = true
   } else if (down(KEY_A)) {
     x -= 1
+    moved = true
   } else if (down(KEY_S)) {
     y += 1
+    moved = true
   } else if (down(KEY_D)) {
     x += 1
+    moved = true
   }
+
+  if (!moved) return
 
   const tile = map.getTileAt(x, y)
   const item = map.getItemAt(x, y)
@@ -85,7 +93,7 @@ function checkMapChange () {
   if (mapChanged) {
     map = world.getCurrentRoom()
     map.setEntrance(x, y)
+    player.goTo(x, y)
   }
 
-  player.goTo(x, y)
 }

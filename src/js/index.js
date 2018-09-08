@@ -24,10 +24,4 @@ function reset () {
   map = world.getCurrentRoom()
 }
 
-
-
-function flat (arr) {
-  return arr.reduce((acc, val) => acc.concat(val), [])
-}
-
 start()

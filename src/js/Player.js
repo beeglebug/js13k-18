@@ -33,9 +33,15 @@ class Player {
     return this.inventory.find(item => item instanceof type)
   }
 
-  damage (amount) {
-    this.health -= amount
+  damage (callback, delay) {
+    if (this.locked) return
+    this.locked = true
+    this.health -= 1
     if (this.health <= 0) return this.kill()
+    setTimeout(() => {
+      callback()
+      this.locked = false
+    }, delay)
   }
 
   kill () {
@@ -45,6 +51,7 @@ class Player {
   }
 
   goTo (x, y) {
+    console.log('goTo')
     this.previousX = this.x
     this.previousY = this.y
     this.x = x
@@ -57,11 +64,8 @@ class Player {
   }
 
   fall () {
-    this.locked = true
-    this.damage(1)
     this.sprite.sx = 48
-    setTimeout(() => {
-      this.locked = false
+    this.damage(() => {
       this.sprite.sx = 0
       this.goTo(map.entrance.x, map.entrance.y)
     }, 600)
@@ -78,4 +82,8 @@ class Player {
     )
   }
 
+}
+
+function flat (arr) {
+  return arr.reduce((acc, val) => acc.concat(val), [])
 }

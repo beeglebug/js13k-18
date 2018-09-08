@@ -10,11 +10,8 @@ class Spikes extends Item {
 
   interact () {
     if (this.retracted) return
-    player.damage(1)
-    player.locked = true
-    setTimeout(() => {
+    player.damage(() => {
       player.goBack()
-      player.locked = false
     }, 200)
   }
 
