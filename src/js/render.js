@@ -43,8 +43,7 @@ function renderInventory () {
 
 function renderItems () {
   if (!map) return
-  map.items.forEach(item => {
-    if (item.sx === undefined) return
+  map.items.filter(item => item.visible).forEach(item => {
     renderSprite(sprites, item.sx, item.sy, item.x * TILE_SIZE, item.y * TILE_SIZE)
   })
 }
