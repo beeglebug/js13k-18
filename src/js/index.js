@@ -42,21 +42,37 @@ function killPlayer () {
 }
 
 function reset () {
-  resetPlayer()
   resetMap()
+  resetPlayer()
+  map = getCurrentRoom()
 }
 
 function resetPlayer () {
+
   player = {
     x: 7,
     y: 7,
     sx: 0,
-    wx: 2,
-    wy: 4,
+    wx: 0,
+    wy: 0,
     inventory: [],
     health: 3,
     maxHealth: 3
   }
+
+  // find spawn
+  flat(rooms).some(room => {
+    const spawn = room.items.find(item => item.type === ITEM_SPAWN)
+    if (!spawn) return false
+    player.x = spawn.x
+    player.y = spawn.y
+    player.wx = room.x
+    player.wy = room.y
+  })
+}
+
+function flat (arr) {
+  return arr.reduce((acc, val) => acc.concat(val), [])
 }
 
 start()

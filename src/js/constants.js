@@ -5,9 +5,10 @@ const GAME_HEIGHT = 128
 const MAP_HEIGHT = 15
 const MAP_WIDTH = 15
 
-const ITEM_KEY = 'K'
-const ITEM_DOOR = 'D'
-const ITEM_SIGN = 'S'
+const ITEM_SPAWN = 'spawn'
+const ITEM_KEY = 'key'
+const ITEM_DOOR = 'door'
+const ITEM_SIGN = 'sign'
 
 const STATE_MOVING = 0
 const STATE_READING = 1

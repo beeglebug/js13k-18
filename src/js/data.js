@@ -15,6 +15,7 @@ const tileData = {
 }
 
 const itemMap = {
+  [ITEM_SPAWN]: () => ({ type: ITEM_SPAWN, collectable: false, solid: false }),
   [ITEM_KEY]: () => ({ type: ITEM_KEY, sx: 8, sy: 8, collectable: true, solid: false }),
   [ITEM_DOOR]: () => ({ type: ITEM_DOOR, sx: 16, sy: 8, collectable: false, solid: true }),
   [ITEM_SIGN]: ([text]) => ({ type: ITEM_SIGN, sx: 24, sy: 8, text: text.split('|') }),
@@ -24,16 +25,17 @@ function resetMap () {
   for (let y = 0; y < roomData.length; y++) {
     for (let x = 0; x < roomData[y].length; x++) {
       if(!rooms[y]) rooms[y] = []
-      rooms[y][x] = parseRoom(roomData[y][x])
+      rooms[y][x] = parseRoom(roomData, x, y)
     }
   }
-  map = getCurrentRoom()
 }
 
 
-function parseRoom (input) {
-  const tiles = input.data.split('').map(spaceToNull)
-  const room = { data: [] }
+function parseRoom (data, x, y) {
+
+  const input = data[y][x]
+  const tiles = input.data.map(spaceToNull)
+  const room = { x, y, data: [] }
 
   for (let y = 0; y < MAP_HEIGHT; y++) {
     const row = []
@@ -59,9 +61,9 @@ function parseRoom (input) {
 }
 
 function parseItem (str) {
-  const [id, x, y, ...rest] = str.split('|')
+  const [type, x, y, ...rest] = str.split('|')
   return {
-    ...itemMap[id](rest),
+    ...itemMap[type](rest),
     x: +x,
     y: +y
   }

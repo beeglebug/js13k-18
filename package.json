@@ -6,6 +6,7 @@
   "author": "Stuart Lee <stuart.lee@drpgroup.com>",
   "license": "MIT",
   "scripts": {
+    "convert": "node data/convert.js",
     "build": "gulp build && echo $(stat -f%z archive.zip) / 13312"
   },
   "dependencies": {

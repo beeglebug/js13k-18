@@ -44,6 +44,7 @@ function drawInventory () {
 function drawItems () {
   if (!map) return
   map.items.forEach(item => {
+    if (item.sx === undefined) return
     drawSprite(item.sx, item.sy, item.x * TILE_SIZE, item.y * TILE_SIZE)
   })
 }
