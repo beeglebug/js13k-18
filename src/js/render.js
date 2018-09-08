@@ -4,7 +4,7 @@ function render () {
   ctx.translate(0, 8)
   renderMap()
   renderItems()
-  renderPlayer()
+  player.render()
 // removeIf(production)
   debugRender()
 // endRemoveIf(production)
@@ -43,9 +43,7 @@ function renderInventory () {
 
 function renderItems () {
   if (!map) return
-  map.items.filter(item => item.visible).forEach(item => {
-    renderSprite(sprites, item.sx, item.sy, item.x * TILE_SIZE, item.y * TILE_SIZE)
-  })
+  map.items.forEach(item => item.render())
 }
 
 function renderMap () {
@@ -67,16 +65,6 @@ function renderTile ({ x, y, sx, sy }) {
     sy,
     x * TILE_SIZE,
     y * TILE_SIZE
-  )
-}
-
-function renderPlayer () {
-  if (state === STATE_DEAD) return
-  renderSprite(
-    sprites,
-    player.sx, 0,
-    player.x * TILE_SIZE,
-    player.y * TILE_SIZE
   )
 }
 

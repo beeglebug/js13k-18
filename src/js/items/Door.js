@@ -2,7 +2,7 @@ class Door extends Item {
   constructor (x, y) {
     super(x, y)
     this.solid = true
-    this.sx = 16
+    this.sprite.sx =16
   }
 
   interact () {

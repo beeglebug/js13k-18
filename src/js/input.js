@@ -1,5 +1,7 @@
 function input () {
 
+  if (player.locked) return
+
   if (state === STATE_DEAD) {
     if (down(KEY_SPACE)) {
       nextText()
@@ -81,8 +83,6 @@ function input () {
     map.setEntrance(x, y)
   }
 
-
-  player.x = x
-  player.y = y
+  player.goTo(x, y)
 }
 

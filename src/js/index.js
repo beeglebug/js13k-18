@@ -22,8 +22,7 @@ function tick() {
       if (player.damage(1)) return
       player.sx = 0
       state = STATE_MOVING
-      player.x = map.entrance.x
-      player.y = map.entrance.y
+      player.goTo(map.entrance.x, map.entrance.y)
     }
   }
   render()

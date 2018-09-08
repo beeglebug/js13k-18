@@ -1,9 +1,9 @@
 class Player {
 
   reset () {
-    this.x = 7
-    this.y = 7
-    this.sx = 0
+    this.x = this.previousX = 7
+    this.x = this.previousY = 7
+    this.sprite = new Sprite(0, 0)
     this.wx = 0
     this.wy = 0
     this.inventory = []
@@ -43,4 +43,28 @@ class Player {
     state = STATE_DEAD
     return true
   }
+
+  goTo (x, y) {
+    this.previousX = this.x
+    this.previousY = this.y
+    this.x = x
+    this.y = y
+  }
+
+  goBack () {
+    this.x = this.previousX
+    this.y = this.previousY
+  }
+
+  render () {
+    if (state === STATE_DEAD) return
+    renderSprite(
+      this.sprite.image,
+      this.sprite.sx,
+      this.sprite.sy,
+      this.x * TILE_SIZE,
+      this.y * TILE_SIZE
+    )
+  }
+
 }

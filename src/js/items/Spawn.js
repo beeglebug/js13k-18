@@ -1,6 +1,6 @@
 class Spawn extends Item {
   constructor (x, y) {
     super(x, y)
-    this.visible = false
+    this.sprite.visible = false
   }
 }

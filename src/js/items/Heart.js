@@ -1,7 +1,7 @@
 class Heart extends Item {
   constructor (x, y) {
     super(x, y)
-    this.sx = 32
+    this.sprite.sx =32
   }
 
   interact () {
