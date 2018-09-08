@@ -42,13 +42,10 @@ function parseRoom (data, x, y) {
     for (let x = 0; x < MAP_WIDTH; x++) {
       const ix = y * MAP_WIDTH + x
       let type = tiles[ix]
-      let tile = null
-      if (type !== 0) {
-        tile = {
-          x, y,
-          solid: true,
-          ...getTileData(type)
-        }
+      const tile = {
+        x, y,
+        solid: true,
+        ...getTileData(type)
       }
       row.push(tile)
     }

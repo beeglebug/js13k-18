@@ -60,12 +60,12 @@ function parseMap (map) {
     const localY = y % ROOM_SIZE - 1
 
     const roomX = Math.floor(x / ROOM_SIZE)
-    const roomY = Math.floor(x / ROOM_SIZE)
+    const roomY = Math.floor(y / ROOM_SIZE)
 
     object.x = localX
     object.y = localY
 
-    rooms[roomX][roomY].items.push(parseObject(object))
+    rooms[roomY][roomX].items.push(parseObject(object))
   })
 
   return rooms

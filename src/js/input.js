@@ -65,7 +65,7 @@ function input () {
   const tile = getTileAt(x, y)
   if (tile) {
     if (tile.solid) return
-    if (tile.type === '0') {
+    if (tile.type === 0) {
       state = STATE_FALLING
     }
   }
