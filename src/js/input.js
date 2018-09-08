@@ -50,9 +50,11 @@ function input () {
   if (tile) {
     if (tile.solid) return
     if (tile.damage) {
-      player.damage(() => {
-        player.goBack()
-      }, 200)
+      if (!player.has(LavaBoots)) {
+        player.damage(() => {
+          player.goBack()
+        }, 200)
+      }
     }
     if (tile.type === 0) player.fall()
   }

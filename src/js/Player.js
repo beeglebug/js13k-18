@@ -30,6 +30,10 @@ class Player {
     this.inventory = this.inventory.filter(i => i !== item)
   }
 
+  has (type) {
+    return this.inventory.find(item => item instanceof type)
+  }
+
   getItemOfType (type) {
     return this.inventory.find(item => item instanceof type)
   }
