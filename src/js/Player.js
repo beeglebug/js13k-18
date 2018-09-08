@@ -12,7 +12,7 @@ class Player {
 
     // find spawn
     flat(world.rooms).some(room => {
-      const spawn = room.items.find(item => item.type === ITEM_SPAWN)
+      const spawn = room.getItemOfType(Spawn)
       if (!spawn) return false
       this.x = spawn.x
       this.y = spawn.y
@@ -29,8 +29,8 @@ class Player {
     this.inventory = this.inventory.filter(i => i !== item)
   }
 
-  get (type) {
-    return this.inventory.find(item => item.type === type)
+  getItemOfType (type) {
+    return this.inventory.find(item => item instanceof type)
   }
 
   damage (amount) {

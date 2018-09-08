@@ -11,15 +11,8 @@ function getTileData (type) {
 
 const tileData = {
   0: { solid: false },
-  1: { solid: false }
-}
-
-const itemMap = {
-  [ITEM_SPAWN]: Spawn,
-  [ITEM_KEY]: Key,
-  [ITEM_DOOR]: Door,
-  [ITEM_SIGN]: Sign,
-  [ITEM_HEART]: Heart,
+  1: { solid: false },
+  9: { solid: false }
 }
 
 function resetMap () {

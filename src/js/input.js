@@ -42,18 +42,7 @@ function input () {
 
   const item = map.getItemAt(x, y)
   if (item) {
-    if (item.collectable) item.collect()
-    if (item.type === ITEM_DOOR) {
-      const key = player.get(ITEM_KEY)
-      if (key) {
-        player.use(key)
-        map.destroyItem(item)
-      } else {
-        showText('It\'s locked\nYou need a key')
-      }
-    } else if (item.type === ITEM_SIGN) {
-      showText(item.text)
-    }
+    item.interact()
     if (item.solid) return
   }
 

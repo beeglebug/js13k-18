@@ -5,11 +5,14 @@ const GAME_HEIGHT = 128
 const MAP_HEIGHT = 15
 const MAP_WIDTH = 15
 
-const ITEM_SPAWN = 'spawn'
-const ITEM_KEY = 'key'
-const ITEM_DOOR = 'door'
-const ITEM_SIGN = 'sign'
-const ITEM_HEART = 'heart'
+const itemMap = {
+  spawn: Spawn,
+  key: Key,
+  door: Door,
+  sign: Sign,
+  spikes: Spikes,
+  heart: Heart,
+}
 
 const STATE_MOVING = 0
 const STATE_READING = 1

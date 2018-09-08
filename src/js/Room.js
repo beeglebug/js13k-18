@@ -25,4 +25,8 @@ class Room {
   destroyItem (item) {
     this.items = this.items.filter(i => i !== item)
   }
+
+  getItemOfType (type) {
+    return this.items.find(item => item instanceof type)
+  }
 }
