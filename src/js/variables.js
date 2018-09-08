@@ -1,10 +1,3 @@
-let lastMove = 0
-
-let mapEntry = {
-  x: 0,
-  y: 0
-}
-
 let pressed = {}
 let pressedLastTick = {}
 

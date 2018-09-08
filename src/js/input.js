@@ -40,11 +40,6 @@ function input () {
 
   if (!moved) return
 
-  const now = +new Date
-  //if (now - lastMove < TICK_INTERVAL) return
-
-  lastMove = now
-
   const item = map.getItemAt(x, y)
   if (item) {
     if (item.collectable) pickUpItem(item)
