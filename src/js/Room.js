@@ -21,4 +21,8 @@ class Room {
     this.entrance.x = x
     this.entrance.y = y
   }
+
+  destroyItem (item) {
+    this.items = this.items.filter(i => i !== item)
+  }
 }

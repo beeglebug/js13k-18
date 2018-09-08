@@ -21,6 +21,18 @@ class Player {
     })
   }
 
+  add (item) {
+    this.inventory.push(item)
+  }
+
+  use (item) {
+    this.inventory = this.inventory.filter(i => i !== item)
+  }
+
+  get (type) {
+    return this.inventory.find(item => item.type === type)
+  }
+
   damage (amount) {
     this.health -= amount
     if (this.health <= 0) return this.kill()

@@ -42,12 +42,12 @@ function input () {
 
   const item = map.getItemAt(x, y)
   if (item) {
-    if (item.collectable) pickUpItem(item)
+    if (item.collectable) item.collect()
     if (item.type === ITEM_DOOR) {
-      const key = getInventoryItem(ITEM_KEY)
+      const key = player.get(ITEM_KEY)
       if (key) {
-        consumeInventoryItem(key)
-        destroyItem(item)
+        player.use(key)
+        map.destroyItem(item)
       } else {
         showText('It\'s locked\nYou need a key')
       }
@@ -97,19 +97,3 @@ function input () {
   player.y = y
 }
 
-function consumeInventoryItem (item) {
-  player.inventory = player.inventory.filter(i => i !== item)
-}
-
-function getInventoryItem (type) {
-  return player.inventory.find(item => item.type === type)
-}
-
-function pickUpItem (item) {
-  destroyItem(item)
-  player.inventory.push(item)
-}
-
-function destroyItem (item) {
-  map.items = map.items.filter(i => i !== item)
-}

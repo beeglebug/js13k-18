@@ -18,7 +18,8 @@ const itemMap = {
   [ITEM_SPAWN]: Spawn,
   [ITEM_KEY]: Key,
   [ITEM_DOOR]: Door,
-  [ITEM_SIGN]: Sign
+  [ITEM_SIGN]: Sign,
+  [ITEM_HEART]: Heart,
 }
 
 function resetMap () {

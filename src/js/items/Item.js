@@ -9,4 +9,9 @@ class Item {
     this.solid = false
     this.collectable = false
   }
+
+  collect (item) {
+    map.destroyItem(item)
+    player.add(item)
+  }
 }

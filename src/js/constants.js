@@ -9,6 +9,7 @@ const ITEM_SPAWN = 'spawn'
 const ITEM_KEY = 'key'
 const ITEM_DOOR = 'door'
 const ITEM_SIGN = 'sign'
+const ITEM_HEART = 'heart'
 
 const STATE_MOVING = 0
 const STATE_READING = 1
