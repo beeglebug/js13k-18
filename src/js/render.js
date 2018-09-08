@@ -37,7 +37,7 @@ function renderHealth () {
 function renderInventory () {
   player.inventory.forEach(item => {
     const x = (MAP_WIDTH - 1) * TILE_SIZE
-    renderSprite(sprites, item.sx, item.sy, x, 0)
+    renderSprite(sprites, item.sprite.sx, item.sprite.sy, x, 0)
   })
 }
 

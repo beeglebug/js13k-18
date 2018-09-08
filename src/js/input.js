@@ -1,7 +1,5 @@
 function input () {
 
-  if (player.locked) return
-
   if (state === STATE_DEAD) {
     if (down(KEY_SPACE)) {
       nextText()
@@ -15,6 +13,8 @@ function input () {
     if (down(KEY_SPACE)) nextText()
     return
   }
+
+  if (player.locked) return
 
   if (state !== STATE_MOVING) return
 
