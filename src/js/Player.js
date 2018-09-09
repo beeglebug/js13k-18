@@ -60,7 +60,6 @@ class Player {
   }
 
   goTo (x, y) {
-    console.log('goTo')
     this.previousX = this.x
     this.previousY = this.y
     this.x = x
