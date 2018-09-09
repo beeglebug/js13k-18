@@ -5,17 +5,6 @@ const GAME_HEIGHT = 128
 const MAP_HEIGHT = 15
 const MAP_WIDTH = 15
 
-const itemMap = {
-  spawn: Spawn,
-  key: Key,
-  door: Door,
-  sign: Sign,
-  spikes: Spikes,
-  heart: Heart,
-  chest: Chest,
-  lavaBoots: LavaBoots,
-}
-
 const STATE_MOVING = 0
 const STATE_READING = 1
 const STATE_DEAD = 3

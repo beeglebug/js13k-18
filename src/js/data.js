@@ -49,13 +49,19 @@ function parseRoom (data, x, y) {
     room.data.push(row)
   }
 
-  room.items = input.items ? input.items.map(parseItem).filter(i => i) : []
+  room.items = input.items ? input.items.map(item => {
+    const [type, ...props] = item
+    return createItem(type, props)
+  }).filter(i => i) : []
 
   return room
 }
 
-function parseItem (item) {
-  const [type, ...rest] = item
-  if (!itemMap[type]) return console.warn('unknown item type', type)
-  return new itemMap[type](...rest)
+function createItem (type, props = []) {
+  try {
+    const ClassName = eval(type)
+    return new ClassName(...props)
+  } catch (e) {
+    return console.warn(e)
+  }
 }

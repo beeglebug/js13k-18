@@ -1,7 +1,7 @@
 class Chest extends Item {
   constructor (x, y, contains) {
     super(x, y)
-    this.contains = new itemMap[contains]()
+    this.contains = createItem(contains)
     this.solid = true
     this.sprite.sx = 88
     this.open = false
