@@ -72,7 +72,7 @@ function checkItems () {
   const newItem = map.getItemAt(player.x, player.y)
 
   if (newItem) newItem.enter()
-  
+
   const oldItem = map.getItemAt(player.previous.x, player.previous.y)
 
   if (oldItem) oldItem.leave()
