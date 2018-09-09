@@ -11,10 +11,10 @@ function start () {
 
 function tick() {
   input()
+  map.items.forEach(item => item.update(TICK_INTERVAL))
   checkMapChange()
   checkItems()
   pressedLastTick = {}
-  map.items.forEach(item => item.update(TICK_INTERVAL))
   render()
 }
 

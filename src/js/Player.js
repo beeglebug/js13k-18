@@ -4,12 +4,14 @@ class Player {
     this.x = this.previousX = 7
     this.x = this.previousY = 7
     this.sprite = new Sprite(0, 0)
+    this.damageSprite = new Sprite(104, 0)
     this.wx = 0
     this.wy = 0
     this.inventory = []
     this.health = 3
     this.maxHealth = 3
     this.locked = false
+    this.takingDamage = false
 
     // find spawn
     flat(world.rooms).some(room => {
@@ -41,10 +43,12 @@ class Player {
   damage (callback, delay) {
     if (this.locked) return
     this.locked = true
+    this.takingDamage = true
     this.health -= 1
     if (this.health <= 0) return this.kill()
     setTimeout(() => {
       this.locked = false
+      this.takingDamage = false
       callback()
     }, delay)
   }
@@ -85,6 +89,15 @@ class Player {
       this.x * TILE_SIZE,
       this.y * TILE_SIZE
     )
+    if (this.takingDamage) {
+      renderSprite(
+        this.damageSprite.image,
+        this.damageSprite.sx,
+        this.damageSprite.sy,
+        this.x * TILE_SIZE,
+        this.y * TILE_SIZE
+      )
+    }
   }
 
 }
