@@ -35,8 +35,8 @@ function renderHealth () {
 }
 
 function renderInventory () {
-  player.inventory.forEach(item => {
-    const x = (MAP_WIDTH - 1) * TILE_SIZE
+  player.inventory.forEach((item, i) => {
+    const x = (MAP_WIDTH - (i + 1)) * TILE_SIZE
     renderSprite(sprites, item.sprite.sx, item.sprite.sy, x, 0)
   })
 }
