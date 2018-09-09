@@ -18,7 +18,7 @@ class Platform extends Item {
 
   update (tick) {
     this.counter += tick
-    if (this.counter > 1000) {
+    if (this.counter > 600) {
       this.counter = 0
       this.move()
     }
@@ -55,8 +55,7 @@ class Platform extends Item {
     }
 
     if (player.onPlatform === this) {
-      player.x = this.x
-      player.y = this.y
+      player.goTo(this.x, this.y)
     }
 
   }

@@ -16,6 +16,7 @@ function tick() {
     map.items.forEach(item => item.update(TICK_INTERVAL))
     checkMapChange()
     checkItems()
+    checkTiles()
   }
   render()
 }

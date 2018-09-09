@@ -1,8 +1,9 @@
 class Player {
 
   reset () {
-    this.x = this.previousX = 7
-    this.x = this.previousY = 7
+    this.previous = {}
+    this.x = this.previous.x = 7
+    this.y = this.previous.y = 7
     this.sprite = new Sprite(0, 0)
     this.damageSprite = new Sprite(104, 0)
     this.wx = 0
@@ -64,15 +65,15 @@ class Player {
   }
 
   goTo (x, y) {
-    this.previousX = this.x
-    this.previousY = this.y
+    this.previous.x = this.x
+    this.previous.y = this.y
     this.x = x
     this.y = y
   }
 
   goBack () {
-    this.x = this.previousX
-    this.y = this.previousY
+    this.x = this.previous.x
+    this.y = this.previous.y
   }
 
   fall () {

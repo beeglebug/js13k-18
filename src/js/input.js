@@ -40,47 +40,42 @@ function input () {
   if (!moved) return
 
   const tile = map.getTileAt(x, y)
-  let item = map.getItemAt(x, y)
+  if (tile && tile.solid) return
 
-  if (item) {
-    if (item.solid) {
-      return item.interact()
-    } else {
-      // entering tile with item
-      item.enter()
-    }
-  }
-
-  if (tile) {
-    if (tile.solid) return
-    if (tile.damage) {
-      if (!player.has(LavaBoots)) {
-        player.damage(() => {
-          player.goBack()
-        }, 200)
-      }
-    }
-    if (tile.type === 0) player.fall()
-  }
-
-  // previous item
-  item = map.getItemAt(player.x, player.y)
-
-  // leaving tile with item
-  if (item) item.leave()
+  const item = map.getItemAt(x, y)
+  if (item && item.solid) return item.interact()
 
   player.goTo(x, y)
 }
 
+
+function checkTiles () {
+
+  const tile = map.getTileAt(player.x, player.y)
+
+  if (tile.damage) {
+    // TODO handle more than lava
+    if (!player.has(LavaBoots)) {
+      player.damage(() => {
+        player.goBack()
+      }, 200)
+    }
+  }
+
+  if (tile.type === 0) player.fall()
+
+}
+
+
 function checkItems () {
 
-  const { x, y } = player
+  const newItem = map.getItemAt(player.x, player.y)
 
-  const item = map.getItemAt(x, y)
+  if (newItem) newItem.enter()
+  
+  const oldItem = map.getItemAt(player.previous.x, player.previous.y)
 
-  if (item) {
-    item.interact()
-  }
+  if (oldItem) oldItem.leave()
 }
 
 function checkMapChange () {
