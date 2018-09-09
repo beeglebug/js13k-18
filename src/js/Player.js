@@ -10,9 +10,12 @@ class Player {
     this.inventory = []
     this.health = 3
     this.maxHealth = 3
+
+    // statuses
     this.locked = false
     this.takingDamage = false
     this.falling = false
+    this.onPlatform = false
 
     // find spawn
     flat(world.rooms).some(room => {
@@ -73,6 +76,7 @@ class Player {
   }
 
   fall () {
+    if (this.onPlatform) return
     this.sprite.sx = 48
     this.falling = true
     this.damage(() => {

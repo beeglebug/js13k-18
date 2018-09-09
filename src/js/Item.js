@@ -13,6 +13,9 @@ class Item {
   // go onto the same tile as item
   enter () {}
 
+  // leave the same tile as item
+  leave () {}
+
   update () {}
 
   render () {

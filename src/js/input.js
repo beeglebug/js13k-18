@@ -40,7 +40,7 @@ function input () {
   if (!moved) return
 
   const tile = map.getTileAt(x, y)
-  const item = map.getItemAt(x, y)
+  let item = map.getItemAt(x, y)
 
   if (item) {
     if (item.solid) {
@@ -62,6 +62,12 @@ function input () {
     }
     if (tile.type === 0) player.fall()
   }
+
+  // previous item
+  item = map.getItemAt(player.x, player.y)
+
+  // leaving tile with item
+  if (item) item.leave()
 
   player.goTo(x, y)
 }

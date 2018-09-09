@@ -53,6 +53,20 @@ class Platform extends Item {
         }
       }
     }
+
+    if (player.onPlatform === this) {
+      player.x = this.x
+      player.y = this.y
+    }
+
+  }
+
+  enter () {
+    player.onPlatform = this
+  }
+
+  leave () {
+    player.onPlatform = false
   }
 }
 
