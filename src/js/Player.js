@@ -12,6 +12,7 @@ class Player {
     this.maxHealth = 3
     this.locked = false
     this.takingDamage = false
+    this.falling = false
 
     // find spawn
     flat(world.rooms).some(room => {
@@ -73,7 +74,9 @@ class Player {
 
   fall () {
     this.sprite.sx = 48
+    this.falling = true
     this.damage(() => {
+      this.falling = false
       this.sprite.sx = 0
       this.goTo(map.entrance.x, map.entrance.y)
     }, 600)
@@ -88,7 +91,7 @@ class Player {
       this.x * TILE_SIZE,
       this.y * TILE_SIZE
     )
-    if (this.takingDamage) {
+    if (this.takingDamage && !this.falling) {
       renderSprite(
         this.damageSprite.image,
         this.damageSprite.sx,
