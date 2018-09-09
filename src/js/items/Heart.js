@@ -4,7 +4,7 @@ class Heart extends Item {
     this.sprite.sx =32
   }
 
-  interact () {
+  enter () {
     if (player.health < player.maxHealth) {
       map.destroyItem(this)
       player.health += 1

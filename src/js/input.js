@@ -43,8 +43,12 @@ function input () {
   const item = map.getItemAt(x, y)
 
   if (item) {
-    item.interact()
-    if (item.solid) return
+    if (item.solid) {
+      return item.interact()
+    } else {
+      // entering tile with item
+      item.enter()
+    }
   }
 
   if (tile) {

@@ -7,7 +7,11 @@ class Item {
     this.solid = false
   }
 
+  // bump solid item
   interact () {}
+
+  // go onto the same tile as item
+  enter () {}
 
   update () {}
 

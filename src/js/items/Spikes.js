@@ -8,7 +8,7 @@ class Spikes extends Item {
     this.counter = 0
   }
 
-  interact () {
+  enter () {
     if (this.retracted) return
     player.damage(() => {
       player.goBack()
