@@ -45,7 +45,7 @@ class Player {
     return this.inventory.find(item => item instanceof type)
   }
 
-  damage (callback, delay) {
+  damage (callback, delay = 1) {
     if (this.locked) return
     this.locked = true
     this.takingDamage = true
@@ -54,7 +54,7 @@ class Player {
     setTimeout(() => {
       this.locked = false
       this.takingDamage = false
-      callback()
+      callback && callback()
     }, delay)
   }
 
