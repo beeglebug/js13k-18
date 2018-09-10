@@ -29,4 +29,8 @@ class Room {
   getItemOfType (type) {
     return this.items.find(item => item instanceof type)
   }
+
+  getItemById (id) {
+    return this.items.find(item => item.id === id)
+  }
 }

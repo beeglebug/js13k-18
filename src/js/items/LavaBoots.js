@@ -1,8 +1,7 @@
 class LavaBoots extends Item {
-  constructor (x, y) {
-    super(x, y)
+  constructor (props) {
+    super(props)
     this.description = 'Lava Boots'
-    this.sprite.sx = 80
   }
 }
 

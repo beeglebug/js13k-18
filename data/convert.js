@@ -65,22 +65,25 @@ function parseMap (map) {
     object.x = localX
     object.y = localY
 
-    rooms[roomY][roomX].items.push(parseObject(object))
+    const tileset = map.tilesets.find(set => set.name === 'sprites')
+
+    rooms[roomY][roomX].items.push(parseObject(object, tileset))
   })
 
   return rooms
 }
 
-function parseObject (object) {
-  const { type, x, y } = object
-  let parsed = [type, x, y]
-  if (object.properties) {
-    parsed = parsed.concat(Object.values(object.properties))
+function parseObject (object, tileset) {
+  const { type, id, x, y, properties = {}, gid } = object
+  const ix = gid - tileset.firstgid
+  return {
+    id,
+    type,
+    x, y,
+    sx: ix * TILE_SIZE,
+    ...properties
   }
-  return parsed
 }
-
-// 'S|7|3|An ancient carving\nYou can\'t decipher it'
 
 function writeOutput (data) {
   const output = `let roomData = ${JSON.stringify(data)}`

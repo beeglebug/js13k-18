@@ -13,7 +13,8 @@ const tileData = {
   0: { solid: false },
   1: { solid: false },
   9: { solid: false },
-  10: { solid: false, damage: true }
+  10: { solid: false, damage: true },
+  11: { solid: false },
 }
 
 function resetMap () {
@@ -49,18 +50,18 @@ function parseRoom (data, x, y) {
     room.data.push(row)
   }
 
-  room.items = input.items ? input.items.map(item => {
-    const [type, ...props] = item
+  room.items = input.items ? input.items.map(props => {
+    const { type } = props
     return createItem(type, props)
   }).filter(i => i) : []
 
   return room
 }
 
-function createItem (type, props = []) {
+function createItem (type, props) {
   try {
     const ClassName = eval(type)
-    return new ClassName(...props)
+    return new ClassName(props)
   } catch (e) {
     return console.warn(e)
   }

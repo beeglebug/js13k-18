@@ -1,15 +1,22 @@
 class Door extends Item {
-  constructor (x, y) {
-    super(x, y)
+  constructor (props) {
+    super(props)
     this.solid = true
-    this.sprite.sx =16
+    this.isOpen = false
   }
 
   interact () {
+    if (this.isOpen) return false
     const key = player.getItemOfType(Key)
     if (!key) return showText('It\'s locked\nYou need a key')
     player.use(key)
-    map.destroyItem(this)
+    this.open()
+  }
+
+  open () {
+    this.isOpen = true
+    this.solid = false
+    this.sprite.visible = false
   }
 }
 

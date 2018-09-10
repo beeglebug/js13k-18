@@ -1,9 +1,8 @@
 class Chest extends Item {
-  constructor (x, y, contains) {
-    super(x, y)
-    this.contains = createItem(contains)
+  constructor (props) {
+    super(props)
+    this.contains = createItem(props.contains)
     this.solid = true
-    this.sprite.sx = 88
     this.open = false
   }
 

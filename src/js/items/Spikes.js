@@ -1,8 +1,7 @@
 class Spikes extends Item {
 
-  constructor (x, y) {
-    super(x, y)
-    this.sprite.sx = 72
+  constructor (props) {
+    super(props)
     this.sprite.visible = false
     this.retracted = true
     this.counter = 0

@@ -1,14 +1,13 @@
 class Platform extends Item {
 
-  constructor (x, y, toX, toY) {
-    super(x, y)
-    this.sprite.sx = 112
+  constructor (props) {
+    super(props)
     this.counter = 0
 
-    this.from = { x, y }
+    this.from = { x: props.x, y: props.y }
     this.to = {
-      x: toX ? +toX : x,
-      y: toY ? +toY : y
+      x: props.toX ? +props.toX : props.x,
+      y: props.toY ? +props.toY : props.y
     }
     this.target = {
       x: this.to.x,

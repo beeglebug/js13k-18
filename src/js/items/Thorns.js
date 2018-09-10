@@ -1,8 +1,7 @@
 class Thorns extends Item {
 
-  constructor (x, y) {
-    super(x, y)
-    this.sprite.sx = 120
+  constructor (props) {
+    super(props)
     this.solid = true
     this.cut = false
   }

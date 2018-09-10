@@ -1,14 +1,17 @@
 class Item {
-  constructor (x, y) {
-    this.x = +x
-    this.y = +y
-    this.sprite = new Sprite(0, 0)
-    this.sy = 0
+  constructor (props = {}) {
+    this.id = props.id
+    this.x = props.x
+    this.y = props.y
+    this.sprite = new Sprite(props.sx, 0)
     this.solid = false
   }
 
   // bump solid item
   interact () {}
+
+  // used remotely
+  activate () {}
 
   // go onto the same tile as item
   enter () {}
@@ -16,6 +19,7 @@ class Item {
   // leave the same tile as item
   leave () {}
 
+  // accumulate ticks
   update () {}
 
   render () {
