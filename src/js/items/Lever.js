@@ -1,14 +1,13 @@
 class Lever extends Item {
   constructor (props) {
     super(props)
-    this.targetId = props.targetId
+    this.targets = props.targets.split(',').map(t => +t)
     this.solid = true
     this.isOn = false
   }
 
   interact () {
-    const target = map.getItemById(this.targetId)
-    target.activate()
+    this.targets.map(id => map.getItemById(id)).forEach(t => t.activate())
     return this.isOn ? this.turnOff() : this.turnOn()
   }
 
