@@ -50,10 +50,10 @@ class Player {
     this.locked = true
     this.takingDamage = true
     this.health -= 1
-    if (this.health <= 0) return this.kill()
     setTimeout(() => {
       this.locked = false
       this.takingDamage = false
+      if (this.health <= 0) return this.kill()
       callback && callback()
     }, delay)
   }

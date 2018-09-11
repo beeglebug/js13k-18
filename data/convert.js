@@ -38,8 +38,8 @@ function getRoom (rx, ry, tiles) {
  */
 function parseMap (map) {
   const rooms = []
-  const tiles = map.layers[0]
-  const objects = map.layers[1].objects
+  const tiles = map.layers.find(layer => layer.name === 'tiles')
+  const objects = map.layers.find(layer => layer.name === 'objects').objects
 
   const { width, height } = tiles
 
