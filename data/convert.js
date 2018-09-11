@@ -80,7 +80,7 @@ function parseObject (object, tileset) {
     id,
     type,
     x, y,
-    sx: ix * TILE_SIZE,
+    sx: ix * TILE_SIZE, // TODO sy
     ...properties
   }
 }

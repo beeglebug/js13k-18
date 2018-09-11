@@ -1,22 +1,5 @@
 const spaceToNull = char => char === ' ' ? null : char
 
-function getTileData (type) {
-  return {
-    type,
-    sy: 0,
-    sx: (type - 1) * TILE_SIZE,
-    ...(tileData[type] || {})
-  }
-}
-
-const tileData = {
-  0: { solid: false },
-  1: { solid: false },
-  9: { solid: false },
-  10: { solid: false, damage: true },
-  11: { solid: false },
-}
-
 function resetMap () {
   const rooms = []
   for (let y = 0; y < roomData.length; y++) {
@@ -40,11 +23,7 @@ function parseRoom (data, x, y) {
     for (let x = 0; x < MAP_WIDTH; x++) {
       const ix = y * MAP_WIDTH + x
       let type = tiles[ix]
-      const tile = {
-        x, y,
-        solid: true,
-        ...getTileData(type)
-      }
+      const tile = new Tile(x, y, type)
       row.push(tile)
     }
     room.data.push(row)

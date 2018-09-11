@@ -52,20 +52,9 @@ function renderMap () {
     for (let x = 0; x < MAP_WIDTH; x++) {
       const tile = map.data[y][x]
       if (!tile) continue
-      renderTile(tile)
+      tile.render()
     }
   }
-}
-
-
-function renderTile ({ x, y, sx, sy }) {
-  renderSprite(
-    tiles,
-    sx,
-    sy,
-    x * TILE_SIZE,
-    y * TILE_SIZE
-  )
 }
 
 function renderSprite (image, sx, sy, x, y) {
