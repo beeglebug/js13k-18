@@ -23,7 +23,7 @@ function parseRoom (data, x, y) {
     for (let x = 0; x < MAP_WIDTH; x++) {
       const ix = y * MAP_WIDTH + x
       let type = tiles[ix]
-      const tile = new Tile(x, y, type)
+      const tile = createTile(x, y, type)
       row.push(tile)
     }
     room.data.push(row)
@@ -44,4 +44,20 @@ function createItem (type, props) {
   } catch (e) {
     return console.warn(e)
   }
+}
+
+const tileData = {
+  0: { solid: false },
+  1: { solid: false },
+  9: { solid: false },
+  11: { solid: false }
+}
+
+const tileClasses = {
+  10: Lava
+}
+
+function createTile (x, y, type) {
+  if (tileClasses[type]) return new tileClasses[type](x, y, type)
+  return new Tile(x, y, type)
 }

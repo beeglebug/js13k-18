@@ -3,7 +3,7 @@ function render () {
   if (state === STATE_MENU) return renderMenu()
   ctx.translate(0, 8)
   renderMap()
-  renderItems()
+  map.items.forEach(item => item.render())
   player.render()
 // removeIf(production)
   debugRender()
@@ -41,10 +41,6 @@ function renderInventory () {
   })
 }
 
-function renderItems () {
-  if (!map) return
-  map.items.forEach(item => item.render())
-}
 
 function renderMap () {
   if (!map) return

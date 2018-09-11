@@ -13,6 +13,7 @@ function tick() {
   input()
   pressedLastTick = {}
   if (state !== STATE_MENU) {
+    updateTiles()
     map.items.forEach(item => item.update(TICK_INTERVAL))
     checkMapChange()
     checkItems()
@@ -25,6 +26,16 @@ function reset () {
   resetMap()
   player.reset()
   map = world.getCurrentRoom()
+}
+
+function updateTiles () {
+  for (let y = 0; y < MAP_HEIGHT; y++) {
+    for (let x = 0; x < MAP_WIDTH; x++) {
+      const tile = map.data[y][x]
+      if (!tile) continue
+      tile.update(TICK_INTERVAL)
+    }
+  }
 }
 
 start()

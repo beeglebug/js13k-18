@@ -10,8 +10,14 @@ class Tile {
     const sy = Math.floor(ix / width)
     const sx = ix % width
 
-    this.solid = !nonSolidTiles[type]
-    this.damage = !!damagingTiles[type]
+    this.solid = true
+    this.damage = false
+
+    const data = tileData[type] || {}
+
+    Object.entries(data).forEach(([key, val]) => {
+      this[key] = val
+    })
 
     this.sprite = new Sprite(sx * TILE_SIZE, sy * TILE_SIZE, tiles)
   }
@@ -26,26 +32,33 @@ class Tile {
     )
   }
 
+  update () {}
 }
 
-
-function getTileData (type) {
-  return {
-    type,
-    sy: 0,
-    sx: (type - 1) * TILE_SIZE,
-    ...(tileData[type] || {})
+class Lava extends Tile {
+  constructor (x, y, tile) {
+    super(x, y, tile)
+    this.solid = false
+    this.damage = true
+    this.counter = 0
+    this.alt = true
   }
-}
 
-const nonSolidTiles = {
-  0: true,
-  1: true,
-  9: true,
-  10: true,
-  11: true,
-}
+  update (tick) {
+    this.counter += tick
+    if (this.counter > 1200) {
+      this.counter = 0
+      this.toggle()
+    }
+  }
 
-const damagingTiles = {
-  10: true
+  toggle () {
+    if (this.alt) {
+      this.alt = false
+      this.sprite.sy += 8
+      return
+    }
+    this.alt = true
+    this.sprite.sy -= 8
+  }
 }
