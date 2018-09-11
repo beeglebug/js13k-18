@@ -368,7 +368,7 @@
                  "name":"",
                  "properties":
                     {
-                     "resetAfter":4000,
+                     "resetAfter":3000,
                      "targets":"56,57"
                     },
                  "propertytypes":
