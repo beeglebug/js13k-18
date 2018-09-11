@@ -1,9 +1,21 @@
 class Lever extends Item {
   constructor (props) {
     super(props)
+    this.resetAfter = props.resetAfter || -1
     this.targets = props.targets.split(',').map(t => +t)
     this.solid = true
     this.isOn = false
+    this.counter = 0
+  }
+
+  update (tick) {
+    if (this.isOn && this.resetAfter) {
+      this.counter += tick
+      if (this.counter > this.resetAfter) {
+        this.counter = 0
+        this.interact()
+      }
+    }
   }
 
   interact () {
