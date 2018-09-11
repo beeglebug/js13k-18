@@ -1,4 +1,4 @@
-class Platform extends Item {
+class MovingPlatform extends Item {
 
   constructor (props) {
     super(props)

@@ -52,6 +52,7 @@ function input () {
 function checkTiles () {
 
   const tile = map.getTileAt(player.x, player.y)
+  const item = map.getItemAt(player.x, player.y)
 
   if (tile.damage) {
     // TODO handle more than lava
@@ -62,7 +63,7 @@ function checkTiles () {
     }
   }
 
-  if (tile.type === 0) player.fall()
+  if (tile.type === 0 && !(item && item.walkable)) player.fall()
 
 }
 

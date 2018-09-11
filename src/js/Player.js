@@ -5,7 +5,7 @@ class Player {
     this.x = this.previous.x = 7
     this.y = this.previous.y = 7
     this.sprite = new Sprite(0, 0)
-    this.damageSprite = new Sprite(104, 0)
+    this.damageSprite = new Sprite(20 * TILE_SIZE, 0)
     this.wx = 0
     this.wy = 0
     this.inventory = []
