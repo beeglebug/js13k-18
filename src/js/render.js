@@ -20,17 +20,9 @@ function clear () {
 function renderUI () {
   ctx.fillStyle = '#26243a'
   ctx.fillRect(0, 7, GAME_WIDTH, 1)
-  renderHealth()
   renderInventory()
   if (currentText) {
     renderText(currentText)
-  }
-}
-
-function renderHealth () {
-  for (let i = 0; i < player.maxHealth; i++) {
-    const sx = i < player.health ? 32 : 40
-    renderSprite(sprites, sx, 0, i * 8, 0)
   }
 }
 

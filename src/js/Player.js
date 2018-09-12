@@ -5,17 +5,12 @@ class Player {
     this.x = this.previous.x = 7
     this.y = this.previous.y = 7
     this.sprite = new Sprite(0, 0)
-    this.damageSprite = new Sprite(20 * TILE_SIZE, 0)
     this.wx = 0
     this.wy = 0
     this.inventory = []
-    this.health = 3
-    this.maxHealth = 3
 
     // statuses
     this.locked = false
-    this.takingDamage = false
-    this.falling = false
     this.onPlatform = false
 
     // find spawn
@@ -45,25 +40,6 @@ class Player {
     return this.inventory.find(item => item instanceof type)
   }
 
-  damage (callback, delay = 1) {
-    if (this.locked) return
-    this.locked = true
-    this.takingDamage = true
-    this.health -= 1
-    setTimeout(() => {
-      this.locked = false
-      this.takingDamage = false
-      if (this.health <= 0) return this.kill()
-      callback && callback()
-    }, delay)
-  }
-
-  kill () {
-    showText('You died')
-    state = STATE_DEAD
-    return true
-  }
-
   goTo (x, y) {
     this.previous.x = this.x
     this.previous.y = this.y
@@ -79,16 +55,15 @@ class Player {
   fall () {
     if (this.onPlatform) return
     this.sprite.sx = 48
-    this.falling = true
-    this.damage(() => {
-      this.falling = false
+    this.locked = true
+    setTimeout(() => {
       this.sprite.sx = 0
+      this.locked = false
       this.goTo(map.entrance.x, map.entrance.y)
     }, 600)
   }
 
   render () {
-    if (state === STATE_DEAD) return
     renderSprite(
       this.sprite.image,
       this.sprite.sx,
@@ -96,15 +71,6 @@ class Player {
       this.x * TILE_SIZE,
       this.y * TILE_SIZE
     )
-    if (this.takingDamage && !this.falling) {
-      renderSprite(
-        this.damageSprite.image,
-        this.damageSprite.sx,
-        this.damageSprite.sy,
-        this.x * TILE_SIZE,
-        this.y * TILE_SIZE
-      )
-    }
   }
 
 }

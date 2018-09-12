@@ -9,7 +9,7 @@ class Spikes extends Item {
 
   enter () {
     if (this.retracted) return
-    player.damage(() => {
+    setTimeout(() => {
       player.goBack()
     }, 200)
   }

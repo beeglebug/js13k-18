@@ -54,10 +54,10 @@ function checkTiles () {
   const tile = map.getTileAt(player.x, player.y)
   const item = map.getItemAt(player.x, player.y)
 
-  if (tile.damage) {
+  if (tile instanceof Lava) {
     // TODO handle more than lava
     if (!player.has(LavaBoots)) {
-      player.damage(() => {
+      setTimeout(() => {
         player.goBack()
       }, 200)
     }

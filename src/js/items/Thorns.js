@@ -9,7 +9,6 @@ class Thorns extends Item {
   interact () {
     if (this.cut) return
     if (player.has(Shears)) return this.cutDown()
-    player.damage()
   }
 
   cutDown () {

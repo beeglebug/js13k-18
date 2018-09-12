@@ -11,7 +11,6 @@ class Tile {
     const sx = ix % width
 
     this.solid = true
-    this.damage = false
 
     const data = tileData[type] || {}
 
@@ -38,8 +37,7 @@ class Tile {
 class Lava extends Tile {
   constructor (x, y, tile) {
     super(x, y, tile)
-    this.solid = false
-    this.damage = true
+    this.solid = true
     this.counter = 0
     this.alt = true
   }
