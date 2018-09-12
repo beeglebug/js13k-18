@@ -39,7 +39,11 @@ function getRoom (rx, ry, tiles) {
 function parseMap (map) {
   const rooms = []
   const tiles = map.layers.find(layer => layer.name === 'tiles')
-  const objects = map.layers.find(layer => layer.name === 'objects').objects
+
+  const objects = map.layers.filter(layer => layer.type === 'objectgroup').reduce((arr, layer) => {
+    arr = arr.concat(layer.objects)
+    return arr
+  }, [])
 
   const { width, height } = tiles
 

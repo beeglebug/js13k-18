@@ -38,5 +38,8 @@ function getX (c) {
   if (cc === 32) return 78
   if (cc === 44) return 81
   if (cc === 39) return 84
+  if (cc === 58) return 87
+  if (cc === 46) return 90
+  if (cc === 63) return 93
   return (cc - 65) * 3
 }

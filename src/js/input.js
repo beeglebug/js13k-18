@@ -1,16 +1,7 @@
 function input () {
 
-  if (state === STATE_DEAD) {
-    if (down(KEY_SPACE)) {
-      nextText()
-      state = STATE_MENU
-      reset()
-    }
-    return
-  }
-
   if (state === STATE_READING || state === STATE_MENU) {
-    if (down(KEY_SPACE)) nextText()
+    if (down(KEY_SPACE) || down(KEY_W) || down(KEY_A) || down(KEY_S) || down(KEY_D)) nextText()
     return
   }
 

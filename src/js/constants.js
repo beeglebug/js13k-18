@@ -7,7 +7,6 @@ const MAP_WIDTH = 15
 
 const STATE_MOVING = 0
 const STATE_READING = 1
-const STATE_DEAD = 3
 const STATE_MENU = 4
 
 const BLACK = '#141020'
@@ -23,6 +22,7 @@ const KEY_SPACE = 32
 const sprites = new Image()
 const tiles = new Image()
 const font = new Image()
+const menu = new Image()
 
 const player = new Player()
 const world = new World()

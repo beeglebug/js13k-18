@@ -2,6 +2,7 @@ function start () {
   tiles.src = './tiles.png'
   sprites.src = './sprites.png'
   font.src = './font.png'
+  menu.src = './menu.png'
   canvas.width = GAME_WIDTH
   canvas.height = GAME_HEIGHT
   reset()
@@ -26,6 +27,12 @@ function reset () {
   resetMap()
   player.reset()
   map = world.getCurrentRoom()
+
+  // TODO uncomment for release
+  // textStack = [
+  //   'THE BRIDGE CRUMBLES\n AWAY BEHIND YOU,\nLEAVING YOU TRAPPED',
+  //   'YOU MUST VENTURE INSIDE\nAND FIND ANOTHER WAY\nTO GET HOME'
+  // ]
 }
 
 function updateTiles () {
