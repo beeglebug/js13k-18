@@ -357,18 +357,6 @@
                  "y":1008
                 }, 
                 {
-                 "gid":37,
-                 "height":8,
-                 "id":53,
-                 "name":"",
-                 "rotation":0,
-                 "type":"Heart",
-                 "visible":true,
-                 "width":8,
-                 "x":216,
-                 "y":984
-                }, 
-                {
                  "gid":51,
                  "height":8,
                  "id":55,
