@@ -8,6 +8,14 @@ class Room {
     this.entrance = { x: 7, y: 7 }
   }
 
+  onEnter () {
+    const note = this.getItemOfType(Note)
+    if (note && !note.seen) {
+      showText(note.text)
+      note.seen = true
+    }
+  }
+
   getTileAt (x, y) {
     const row = this.data[y]
     return row && row[x]

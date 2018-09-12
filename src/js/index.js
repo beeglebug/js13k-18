@@ -1,4 +1,4 @@
-function start () {
+function boot () {
   tiles.src = './tiles.png'
   sprites.src = './sprites.png'
   font.src = './font.png'
@@ -26,13 +26,12 @@ function tick() {
 function reset () {
   resetMap()
   player.reset()
-  map = world.getCurrentRoom()
+}
 
-  // TODO uncomment for release
-  // textStack = [
-  //   'THE BRIDGE CRUMBLES\n AWAY BEHIND YOU,\nLEAVING YOU TRAPPED',
-  //   'YOU MUST VENTURE INSIDE\nAND FIND ANOTHER WAY\nTO GET HOME'
-  // ]
+function start () {
+  map = world.getCurrentRoom()
+  state = STATE_MOVING
+  map.onEnter()
 }
 
 function updateTiles () {
@@ -45,4 +44,4 @@ function updateTiles () {
   }
 }
 
-start()
+boot()

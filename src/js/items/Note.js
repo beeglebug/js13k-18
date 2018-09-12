@@ -1,12 +1,8 @@
 class Note extends Item {
-
   constructor (props) {
     super(props)
-    this.solid = true
+    this.sprite.visible = false
     this.text = props.text.split('\n\n')
-  }
-
-  interact () {
-    showText(this.text)
+    this.seen = false
   }
 }

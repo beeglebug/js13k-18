@@ -1,8 +1,8 @@
 function input () {
 
-  if (state === STATE_READING || state === STATE_MENU) {
-    if (down(KEY_SPACE) || down(KEY_W) || down(KEY_A) || down(KEY_S) || down(KEY_D)) nextText()
-    return
+  if (down(KEY_SPACE)) {
+    if (state === STATE_MENU) return start()
+    if (state === STATE_READING) return nextText()
   }
 
   if (player.locked) return
@@ -97,6 +97,7 @@ function checkMapChange () {
   if (mapChanged) {
     map = world.getCurrentRoom()
     map.setEntrance(x, y)
+    map.onEnter()
     player.goTo(x, y)
   }
 
