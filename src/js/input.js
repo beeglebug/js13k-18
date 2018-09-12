@@ -40,7 +40,7 @@ function input () {
   if (!moved) return
 
   const tile = map.getTileAt(x, y)
-  if (tile && tile.solid) return
+  if (tile && tile.isSolid()) return
 
   const item = map.getItemAt(x, y)
   if (item && item.solid) return item.interact()

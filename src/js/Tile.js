@@ -32,6 +32,10 @@ class Tile {
   }
 
   update () {}
+
+  isSolid () {
+    return this.solid
+  }
 }
 
 class Lava extends Tile {
@@ -58,5 +62,9 @@ class Lava extends Tile {
     }
     this.alt = true
     this.sprite.sy -= 8
+  }
+
+  isSolid () {
+    return !player.has(LavaBoots)
   }
 }
