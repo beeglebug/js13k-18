@@ -21,6 +21,7 @@ class Player {
       this.y = spawn.y
       this.wx = room.x
       this.wy = room.y
+      this.inventory = this.inventory.concat(spawn.items)
     })
   }
 
