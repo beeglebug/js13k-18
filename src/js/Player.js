@@ -9,6 +9,8 @@ class Player {
     this.wy = 0
     this.inventory = []
 
+    this.hasFallen = false
+
     // statuses
     this.locked = false
     this.onPlatform = false
@@ -61,6 +63,10 @@ class Player {
       this.sprite.sx = 0
       this.locked = false
       this.goTo(map.entrance.x, map.entrance.y)
+      if (!this.hasFallen) {
+        showText("You don't think\ni'd let you off\n that easily do you?")
+        this.hasFallen = true
+      }
     }, 600)
   }
 
