@@ -2,7 +2,6 @@ function boot () {
   tiles.src = './tiles.png'
   sprites.src = './sprites.png'
   font.src = './font.png'
-  menu.src = './menu.png'
   canvas.width = GAME_WIDTH
   canvas.height = GAME_HEIGHT
   reset()

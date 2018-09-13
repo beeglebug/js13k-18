@@ -52,9 +52,12 @@ function checkTiles () {
         player.goBack()
       }, 200)
     }
+    return
   }
 
-  if (tile.type === 0 && !(item && item.walkable)) player.fall()
+  if (tile.hole && !(item && item.walkable) && !player.falling) {
+    player.fall()
+  }
 
 }
 

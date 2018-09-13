@@ -4,15 +4,27 @@ class MovingPlatform extends Item {
     super(props)
     this.counter = 0
 
-    this.from = { x: props.x, y: props.y }
+    this.from = {
+      x: props.fromX ? +props.fromX : props.x,
+      y: props.fromY ? +props.fromY : props.y
+    }
+
     this.to = {
       x: props.toX ? +props.toX : props.x,
       y: props.toY ? +props.toY : props.y
     }
+
     this.target = {
       x: this.to.x,
       y: this.to.y,
     }
+
+    this.origin = {
+      x: this.x,
+      y: this.y
+    }
+
+    this.walkable = true
   }
 
   update (tick) {
@@ -21,6 +33,11 @@ class MovingPlatform extends Item {
       this.counter = 0
       this.move()
     }
+  }
+
+  reset () {
+    this.x = this.origin.x,
+    this.y = this.origin.y
   }
 
   move () {

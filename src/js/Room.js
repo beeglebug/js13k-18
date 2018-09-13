@@ -14,6 +14,9 @@ class Room {
       showText(note.text)
       note.seen = true
     }
+
+    const platforms = this.getItemsOfType(MovingPlatform)
+    platforms.forEach(platform => platform.reset())
   }
 
   getTileAt (x, y) {
@@ -35,7 +38,11 @@ class Room {
   }
 
   getItemOfType (type) {
-    return this.items.find(item => item instanceof type)
+    return this.getItemsOfType(type)[0]
+  }
+
+  getItemsOfType (type) {
+    return this.items.filter(item => item instanceof type)
   }
 
   getItemById (id) {

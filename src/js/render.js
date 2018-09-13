@@ -60,8 +60,5 @@ function renderSprite (image, sx, sy, x, y) {
 }
 
 function renderMenu () {
-  ctx.drawImage(menu, 0, 0)
-  ctx.translate(0, 20)
   renderText('PRESS ANY KEY TO START')
-  ctx.translate(0, -20)
 }

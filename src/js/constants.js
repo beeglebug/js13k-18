@@ -22,7 +22,6 @@ const KEY_SPACE = 32
 const sprites = new Image()
 const tiles = new Image()
 const font = new Image()
-const menu = new Image()
 
 const player = new Player()
 const world = new World()

@@ -19,7 +19,7 @@ class Lever extends Item {
   }
 
   interact () {
-    this.targets.map(id => map.getItemById(id)).forEach(t => t.activate())
+    this.targets.map(id => map.getItemById(id)).forEach(t => t && t.activate())
     return this.isOn ? this.turnOff() : this.turnOn()
   }
 

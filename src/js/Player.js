@@ -9,6 +9,7 @@ class Player {
     this.wy = 0
     this.inventory = []
 
+    this.falling = false
     this.hasFallen = false
 
     // statuses
@@ -56,12 +57,14 @@ class Player {
   }
 
   fall () {
-    if (this.onPlatform) return
+    if (this.onPlatform || this.falling) return
     this.sprite.sx = 48
     this.locked = true
+    this.falling = true
     setTimeout(() => {
       this.sprite.sx = 0
       this.locked = false
+      this.falling = false
       this.goTo(map.entrance.x, map.entrance.y)
       if (!this.hasFallen) {
         showText("You don't think\ni'd let you off\n that easily do you?")

@@ -61,10 +61,10 @@ function parseMap (map) {
     const y = object.y / TILE_SIZE
 
     const localX = x % ROOM_SIZE
-    const localY = y % ROOM_SIZE - 1
+    const localY = (y - 1) % ROOM_SIZE
 
     const roomX = Math.floor(x / ROOM_SIZE)
-    const roomY = Math.floor(y / ROOM_SIZE)
+    const roomY = Math.floor((y - 1) / ROOM_SIZE)
 
     object.x = localX
     object.y = localY

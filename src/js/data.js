@@ -47,10 +47,11 @@ function createItem (type, props) {
 }
 
 const tileData = {
-  0: { solid: false },
+  0: { solid: false, hole: true },
   1: { solid: false },
   9: { solid: false },
-  11: { solid: false }
+  11: { solid: false },
+  13: { solid: false, hole: true }
 }
 
 const tileClasses = {
