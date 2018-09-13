@@ -12,10 +12,11 @@ function boot () {
 function tick() {
   input()
   pressedLastTick = {}
-  if (state !== STATE_MENU) {
+  if (state !== STATE_MENU && state !== STATE_WIN) {
     updateTiles()
     map.items.forEach(item => item.update(TICK_INTERVAL))
     checkMapChange()
+    if (state === STATE_WIN) return
     checkItems()
     checkTiles()
   }
@@ -41,6 +42,15 @@ function updateTiles () {
       tile.update(TICK_INTERVAL)
     }
   }
+}
+
+function restart() {
+  state = STATE_MENU
+  reset()
+}
+
+function win () {
+  state = STATE_WIN
 }
 
 boot()

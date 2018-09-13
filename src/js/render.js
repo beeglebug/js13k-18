@@ -1,6 +1,7 @@
 function render () {
   clear()
   if (state === STATE_MENU) return renderMenu()
+  if (state === STATE_WIN) return renderWin()
   ctx.translate(0, 8)
   renderMap()
   map.items.forEach(item => item.render())
@@ -62,3 +63,8 @@ function renderSprite (image, sx, sy, x, y) {
 function renderMenu () {
   renderText('PRESS ANY KEY TO START')
 }
+
+function renderWin () {
+  renderText('YOU ESCAPED')
+}
+

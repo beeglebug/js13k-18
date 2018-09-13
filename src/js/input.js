@@ -1,6 +1,7 @@
 function input () {
 
   if (down(KEY_SPACE)) {
+    if (state === STATE_WIN) return restart()
     if (state === STATE_MENU) return start()
     if (state === STATE_READING) return nextText()
   }
@@ -95,6 +96,10 @@ function checkMapChange () {
     player.wx -= 1
     x = MAP_WIDTH - 1
     mapChanged = true
+  }
+
+  if (player.wy === -1) {
+    return win()
   }
 
   if (mapChanged) {

@@ -51,7 +51,9 @@ const tileData = {
   1: { solid: false },
   9: { solid: false },
   11: { solid: false },
-  13: { solid: false, hole: true }
+  13: { solid: false, hole: true },
+  14: { solid: false },
+  16: { solid: false, hole: true },
 }
 
 const tileClasses = {
