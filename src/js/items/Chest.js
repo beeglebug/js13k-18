@@ -11,7 +11,7 @@ class Chest extends Item {
     this.open = true
     this.sprite.sx = 96
     player.add(this.contains)
-    showText(`You found\n${this.contains.description}`)
+    showText(`You found ${this.contains.description}`)
   }
 }
 

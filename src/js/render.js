@@ -61,7 +61,7 @@ function renderSprite (image, sx, sy, x, y) {
 }
 
 function renderMenu () {
-  renderText('PRESS ANY KEY TO START')
+  renderText('PRESS SPACE KEY TO START')
 }
 
 function renderWin () {
